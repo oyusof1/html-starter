@@ -1,96 +1,749 @@
 <!DOCTYPE html>
+        <html>
+          <head>
+            <title></title>
+            
+          <script defer data-domain="price.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script></head>
+          <body>
+            <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing planner</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <style>
+        .content-card {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .mdl-data-table {
+            width: 100%;
+            table-layout: fixed;
+            white-space: normal;
+        }
+        .mdl-data-table td, .mdl-data-table th {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding: 8px 4px;
+        }
+        .mdl-data-table .notes-column {
+            width: 20%;
+        }
+        #weekly-view {
+            display: none;
+        }
+        .mdl-layout__header-row {
+            color: white;
+        }
+        .view-toggle {
+            margin: 20px 0;
+        }
+        .year-2023 {
+            background-color: #E8EAF6;
+        }
+        .year-2024 {
+            background-color: #F3E5F5;
+        }
+        .mdl-data-table tbody tr:nth-child(even) {
+            background-color: #F5F5F5;
+        }
+        .mdl-data-table tbody tr:nth-child(odd) {
+            background-color: #FFFFFF;
+        }
+        .mdl-data-table tbody tr:hover {
+            background-color: #C5CAE9;
+        }
+        .year-group-2023 {
+            background-color: #F5F5F5;
+        }
+        .year-group-2024 {
+            background-color: #FFFFFF;
+        }
+        .forecast-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .forecast-form .mdl-textfield {
+            width: 100%;
+            max-width: 300px;
+        }
+        .forecast-form .mdl-button {
+            align-self: flex-start;
+        }
+        .forecast-results {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+        #update-table {
+            margin-top: 24px;
+        }
+        .editable-notes {
+            min-height: 1.5em;
+            padding: 4px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s;
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .editable-notes:hover, .editable-notes:focus {
+            border-color: rgba(0, 0, 0, 0.12);
+            outline: none;
+            white-space: normal;
+            overflow: visible;
+            max-width: none;
+        }
+        .mdl-data-table td {
+            vertical-align: top;
+        }
+        .product-search-container {
+            position: relative;
+            padding-bottom: 0;
+        }
+        #autocomplete-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: white;
+            max-height: 200px;
+            overflow-y: auto;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+            border-top: 1px solid rgba(0,0,0,.12);
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            margin: 0;
+            padding: 0;
+        }
+        .autocomplete-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .autocomplete-item:hover {
+            background-color: rgba(0,0,0,.05);
+        }
+        .mdl-textfield.is-focused + #autocomplete-results {
+            display: block !important;
+        }
+        .mdl-card__title {
+            padding-bottom: 0;
+        }
+        .mdl-textfield {
+            width: 100%;
+            margin-bottom: 0;
+            padding-bottom: 20px;
+        }
+        .mdl-textfield__input {
+            border-bottom: 1px solid rgba(0,0,0,.12);
+        }
+        .mdl-textfield.is-focused .mdl-textfield__input {
+            border-bottom: 2px solid rgb(63,81,181);
+        }
+        .blank-footer {
+            height: 50px;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 839px) {
+            .mdl-data-table {
+                font-size: 12px;
+            }
+            .mdl-data-table .notes-column {
+                width: 100%;
+            }
+            .mdl-data-table, .mdl-data-table tbody, .mdl-data-table tr, .mdl-data-table td {
+                display: block;
+            }
+            .mdl-data-table tr {
+                margin-bottom: 10px;
+            }
+            .mdl-data-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .mdl-data-table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Price planning</span>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- White Ticket Table Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title product-search-container">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 100%;">
+                            <input class="mdl-textfield__input" type="text" id="product-search">
+                            <label class="mdl-textfield__label" for="product-search">Search Product Group Code or Name</label>
+                        </div>
+                        <div id="autocomplete-results" class="mdl-card__actions"></div>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric"></th>
+                                    <th>2023 (Historical)</th>
+                                    <th>2024 (Projected)</th>
+                                    <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">White Ticket</td>
+                                    <td>$79.99</td>
+                                    <td id="projected-price">$84.99</td>
+                                    <td class="mdl-data-table__cell--non-numeric notes-column"><div contenteditable="true" class="editable-notes" data-table="white-ticket" data-row="0"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Units</td>
+                                    <td>25,000</td>
+                                    <td id="projected-units">30,000</td>
+                                    <td class="mdl-data-table__cell--non-numeric notes-column"><div contenteditable="true" class="editable-notes" data-table="white-ticket" data-row="1"></div></td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Revenue</td>
+                                    <td>$1,999,750</td>
+                                    <td id="projected-revenue">$2,549,700</td>
+                                    <td class="mdl-data-table__cell--non-numeric notes-column"><div contenteditable="true" class="editable-notes" data-table="white-ticket" data-row="2"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Togglable Views Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Detailed View</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <!-- View Toggle Switch -->
+                        <div class="view-toggle">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="view-toggle">
+                                <input type="checkbox" id="view-toggle" class="mdl-switch__input">
+                                <span class="mdl-switch__label">Show Last Year pricing - by week</span>
+                            </label>
+                        </div>
+
+                        <!-- Yearly View -->
+                        <div id="yearly-view">
+                            <!-- Promotions Table -->
+                            <h4>Next Year pricing</h4>
+                            <button id="add-promotion" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Add Promotion
+                            </button>
+                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric" rowspan="2">Promotion</th>
+                                        <th colspan="5" class="year-group-2023">2023 (Historical)</th>
+                                        <th colspan="5" class="year-group-2024">2024 (Projected)</th>
+                                        <th class="mdl-data-table__cell--non-numeric notes-column" rowspan="2">Notes</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="year-group-2023">Price</th>
+                                        <th class="year-group-2023">OTD/AUR</th>
+                                        <th class="mdl-data-table__cell--non-numeric year-group-2023">Dates</th>
+                                        <th class="year-group-2023">Units</th>
+                                        <th class="year-group-2023">Sales</th>
+                                        <th class="year-group-2024">Price</th>
+                                        <th class="year-group-2024">OTD/AUR</th>
+                                        <th class="mdl-data-table__cell--non-numeric year-group-2024">Dates</th>
+                                        <th class="year-group-2024">Units</th>
+                                        <th class="year-group-2024">Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Promotion rows will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                            <div id="promotion-days-tally" class="mdl-typography--text-right">
+                                <strong>Total Promotion Days: <span id="total-promo-days">0</span></strong>
+                            </div>
+                        </div>
+
+                        <!-- Weekly View -->
+                        <div id="weekly-view">
+                            <h4>Last Year Pricing</h4>
+                            <table class="mdl-data-table mdl-js-data-table" id="weekly-data">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Week</th>
+                                        <th>Price</th>
+                                        <th>OTD/AUR</th>
+                                        <th>Units</th>
+                                        <th>Revenue</th>
+                                        <th>Inventory</th>
+                                        <th>MMU</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                        <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Weekly data rows will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Forecasting Tool Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Scenario Tool</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <form id="forecast-form" class="forecast-form">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select class="mdl-textfield__input" id="promotion-select">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                                <label class="mdl-textfield__label" for="promotion-select">Select Promotion</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="price" step="0.01" min="0">
+                                <label class="mdl-textfield__label" for="price">Enter New Price</label>
+                            </div>
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Calculate Forecast
+                            </button>
+                        </form>
+                        <div id="forecast-results" class="forecast-results">
+                            <p>Projected Units: <span id="calculated-units"></span></p>
+                            <p>Projected Revenue: <span id="calculated-revenue"></span></p>
+                        </div>
+                        <button type="button" id="update-table" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="display:none;">
+                            Update Table with New Forecast
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="mdl-mini-footer blank-footer">
+            <!-- This footer intentionally left blank -->
+        </footer>
+    </div>
+
+    <!-- Add Promotion Modal -->
+    <div id="add-promotion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Promotion</h2>
+            <form id="add-promotion-form">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="promotion-template">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                    <label class="mdl-textfield__label" for="promotion-template">Select Promotion Template</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="new-promotion-name">
+                    <label class="mdl-textfield__label" for="new-promotion-name">New Promotion Name</label>
+                </div>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    Add Promotion
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // DOM elements
+        const productSearch = document.getElementById('product-search');
+        const autocompleteResults = document.getElementById('autocomplete-results');
+        const form = document.getElementById('forecast-form');
+        const updateTableButton = document.getElementById('update-table');
+        const viewToggle = document.getElementById('view-toggle');
+        const yearlyView = document.getElementById('yearly-view');
+        const weeklyView = document.getElementById('weekly-view');
+        const promotionSelect = document.getElementById('promotion-select');
+        const addPromotionButton = document.getElementById('add-promotion');
+        const addPromotionModal = document.getElementById('add-promotion-modal');
+        const addPromotionForm = document.getElementById('add-promotion-form');
+        const promotionTemplate = document.getElementById('promotion-template');
+        const newPromotionName = document.getElementById('new-promotion-name');
+        const closeModal = addPromotionModal.querySelector('.close');
+
+        // State variables
+        let calculatedUnits, calculatedRevenue;
+        let currentProduct = null;
+
+        // Sample product data (replace with actual data source)
+        const products = [
+            { code: "344", name: "Nike Dri-FIT $85 Women's Running Leggings", price: 84.99 },
+            { code: "345", name: "Nike Pro Women's Training Tights", price: 79.99 },
+            { code: "346", name: "Nike One Women's Mid-Rise Leggings", price: 74.99 },
+            { code: "347", name: "Nike Yoga Women's High-Waisted Leggings", price: 69.99 },
+            { code: "348", name: "Nike Sportswear Essential Women's Leggings", price: 59.99 }
+        ];
+
+        // Promotions data
+        const promotions = [
+            { name: "Summer Sale", discount: 0.2, startDate: '2024-06-01', endDate: '2024-07-04' },
+            { name: "Black Friday", discount: 0.3, startDate: '2024-11-23', endDate: '2024-11-26' }
+        ];
+
+        // Event Listeners
+        productSearch.addEventListener('input', handleProductSearch);
+        productSearch.addEventListener('focus', handleProductFocus);
+        productSearch.addEventListener('input', handleProductInput);
+        form.addEventListener('submit', handleForecastSubmit);
+        updateTableButton.addEventListener('click', updateTables);
+        viewToggle.addEventListener('change', toggleView);
+        document.addEventListener('click', closeAutocomplete);
+        document.addEventListener('input', handleNotesInput);
+        addPromotionButton.addEventListener('click', openAddPromotionModal);
+        closeModal.addEventListener('click', closeAddPromotionModal);
+        addPromotionForm.addEventListener('submit', handleAddPromotion);
+
+        // Initialize
+        populatePromotionDropdown();
+        populatePromotionsTable();
+        populateWeeklyData();
+        componentHandler.upgradeElement(document.querySelector('.mdl-js-switch'));
+        upgradeMDLComponents();
+
+        // Calculate initial promotion days
+        const initialPromoDays = calculatePromotionDays(promotions);
+        document.getElementById('total-promo-days').textContent = initialPromoDays;
+
+        // Functions
+        function handleProductSearch() {
+            const input = this.value.toLowerCase();
+            const results = products.filter(product => 
+                product.code.toLowerCase().includes(input) || product.name.toLowerCase().includes(input)
+            );
+            displayAutocompleteResults(results);
+        }
+
+        function handleProductFocus() {
+            if (this.value === '') {
+                displayAutocompleteResults(products);
+            }
+        }
+
+        function handleProductInput() {
+            if (this.value.length > 0) {
+                this.parentElement.classList.add('is-dirty');
+            } else {
+                this.parentElement.classList.remove('is-dirty');
+            }
+        }
+
+        function displayAutocompleteResults(results) {
+            autocompleteResults.innerHTML = '';
+            if (results.length === 0) {
+                autocompleteResults.style.display = 'none';
+                return;
+            }
+
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.textContent = `${result.code} - ${result.name}`;
+                div.className = 'autocomplete-item mdl-button mdl-js-button mdl-js-ripple-effect';
+                div.addEventListener('click', () => selectProduct(result));
+                autocompleteResults.appendChild(div);
+            });
+
+            autocompleteResults.style.display = 'block';
+        }
+
+        function selectProduct(product) {
+            currentProduct = product;
+            productSearch.value = `${product.code} - ${product.name}`;
+            autocompleteResults.style.display = 'none';
+            productSearch.parentElement.classList.add('is-dirty');
+            upgradeMDLComponents();
+            loadProductData(product);
+        }
+
+        function loadProductData(product) {
+            // Update UI with product data
+            document.getElementById('projected-price').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('projected-units').textContent = '30,000'; // Example value
+            document.getElementById('projected-revenue').textContent = `$${(product.price * 30000).toFixed(2)}`;
+            
+            // Reset and repopulate other tables as needed
+            populatePromotionDropdown();
+            populatePromotionsTable();
+            populateWeeklyData();
+        }
+
+     function populatePromotionDropdown() {
+    promotionSelect.innerHTML = '';
+    promotions.forEach((promo, index) => {
+        const option = document.createElement('option');
+        option.value = index;  // This should be the index, not a string
+        const price = currentProduct ? currentProduct.price * (1 - promo.discount) : 0;
+        let dateRange = '';
+        if (promo.startDate && promo.endDate) {
+            dateRange = ` (${promo.startDate} to ${promo.endDate})`;
+        }
+        option.textContent = `${promo.name}${dateRange} (Current: $${price.toFixed(2)})`;
+        promotionSelect.appendChild(option);
+    });
+}
+        function populatePromotionsTable() {
+            const tbody = document.querySelector('#promotions-data tbody');
+            tbody.innerHTML = '';
+
+            promotions.forEach((promo, index) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td data-label="Promotion" class="mdl-data-table__cell--non-numeric">${promo.name}</td>
+                    <td data-label="2023 Price">$59.99</td>
+                    <td data-label="2023 OTD/AUR">$59.99</td>
+                    <td data-label="2023 Dates" class="mdl-data-table__cell--non-numeric">06/15 - 07/15</td>
+                    <td data-label="2023 Units">5,000</td>
+                    <td data-label="2023 Sales">$299,950</td>
+                    <td data-label="2024 Price">$${(currentProduct ? currentProduct.price * (1 - promo.discount) : 0).toFixed(2)}</td>
+                    <td data-label="2024 OTD/AUR">$${(currentProduct ? currentProduct.price * (1 - promo.discount) : 0).toFixed(2)}</td>
+                    <td data-label="2024 Dates" class="mdl-data-table__cell--non-numeric">${promo.startDate || ''} - ${promo.endDate || ''}</td>
+                    <td data-label="2024 Units">0</td>
+                    <td data-label="2024 Sales">$0.00</td>
+                    <td data-label="Notes" class="mdl-data-table__cell--non-numeric notes-column"><div contenteditable="true" class="editable-notes" data-table="promotions" data-row="${index}"></div></td>
+                `;
+            });
+        }
+
+        function handleForecastSubmit(e) {
+            e.preventDefault();
+            const price = parseFloat(document.getElementById('price').value);
+            
+            // Dummy calculation (replace with actual forecast logic)
+            calculatedUnits = Math.round(100000 / price);
+            calculatedRevenue = price * calculatedUnits;
+
+            document.getElementById('calculated-units').textContent = calculatedUnits.toLocaleString();
+            document.getElementById('calculated-revenue').textContent = '$' + calculatedRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            updateTableButton.style.display = 'inline-block';
+        }
+
+        function updateTables() {
+    const price = parseFloat(document.getElementById('price').value);
+    const selectedPromoIndex = parseInt(promotionSelect.value);
+    
+    // Update promotions table
+    const promoTable = document.getElementById('promotions-data');
+    const row = promoTable.querySelector(`tbody tr:nth-child(${selectedPromoIndex + 1})`);
+    if (row) {
+        row.cells[6].textContent = '$' + price.toFixed(2);
+        row.cells[7].textContent = '$' + price.toFixed(2);
+        row.cells[9].textContent = calculatedUnits.toLocaleString();
+        row.cells[10].textContent = '$' + calculatedRevenue.toFixed(2);
+    }
+
+    // Update overview table if "Regular Price" was changed
+    if (selectedPromoIndex === 0) {
+        document.getElementById('projected-price').textContent = '$' + price.toFixed(2);
+        document.getElementById('projected-units').textContent = calculatedUnits.toLocaleString();
+        document.getElementById('projected-revenue').textContent = '$' + calculatedRevenue.toFixed(2);
+    }
+
+    // Update promotion days tally
+    const totalPromoDays = calculatePromotionDays(promotions);
+    document.getElementById('total-promo-days').textContent = totalPromoDays;
+    
+    updateTableButton.style.display = 'none';
+}
+        function toggleView() {
+            if (this.checked) {
+                yearlyView.style.display = 'none';
+                weeklyView.style.display = 'block';
+            } else {
+                yearlyView.style.display = 'block';
+                weeklyView.style.display = 'none';
+            }
+        }
+
+       function populateWeeklyData() {
+            // Dummy data for last year's weekly data
+            const weeklyData = [
+                { week: 1, price: 79.99, otdAur: 79.99, units: 577, revenue: 46155.23, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 2, price: 79.99, otdAur: 79.99, units: 592, revenue: 47354.08, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 22, price: 59.99, otdAur: 59.99, units: 1200, revenue: 71988.00, inventory: 15000, mmu: "40%", promotion: "Summer Sale", notes: "" },
+                { week: 47, price: 49.99, otdAur: 49.99, units: 2000, revenue: 99980.00, inventory: 20000, mmu: "35%", promotion: "Black Friday", notes: "" },
+            ];
+
+            const tbody = document.querySelector('#weekly-data tbody');
+            tbody.innerHTML = '';
+
+            weeklyData.forEach((week, index) => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td data-label="Week" class="mdl-data-table__cell--non-numeric">Week ${week.week}</td>
+                    <td data-label="Price">$${week.price.toFixed(2)}</td>
+                    <td data-label="OTD/AUR">$${week.otdAur.toFixed(2)}</td>
+                    <td data-label="Units">${week.units.toLocaleString()}</td>
+                    <td data-label="Revenue">$${week.revenue.toFixed(2)}</td>
+                    <td data-label="Inventory">${week.inventory.toLocaleString()}</td>
+                    <td data-label="MMU">${week.mmu}</td>
+                    <td data-label="Promotion" class="mdl-data-table__cell--non-numeric">${week.promotion}</td>
+                    <td data-label="Notes" class="mdl-data-table__cell--non-numeric notes-column"><div contenteditable="true" class="editable-notes" data-table="weekly" data-row="${index}">${week.notes}</div></td>
+                `;
+            });
+        }
+
+        function handleNotesInput(event) {
+            if (event.target.classList.contains('editable-notes')) {
+                const table = event.target.getAttribute('data-table');
+                const row = event.target.getAttribute('data-row');
+                const content = event.target.textContent;
+                saveNotes(table, row, content);
+            }
+        }
+
+        function saveNotes(table, row, content) {
+            // In a real application, you would send this data to your server here
+            console.log(`Saving note for ${table} table, row ${row}: ${content}`);
+        }
+
+        function closeAutocomplete(e) {
+            if (!productSearch.contains(e.target) && !autocompleteResults.contains(e.target)) {
+                autocompleteResults.style.display = 'none';
+            }
+        }
+
+        function upgradeMDLComponents() {
+            componentHandler.upgradeAllRegistered();
+        }
+
+        function calculatePromotionDays(promotions) {
+            let totalDays = 0;
+            promotions.forEach(promo => {
+                if (promo.startDate && promo.endDate) {
+                    const start = new Date(promo.startDate);
+                    const end = new Date(promo.endDate);
+                    const days = (end - start) / (1000 * 60 * 60 * 24) + 1; // +1 to include both start and end dates
+                    totalDays += days;
+                }
+            });
+            return totalDays;
+        }
+
+        function openAddPromotionModal() {
+            populatePromotionTemplates();
+            addPromotionModal.style.display = 'block';
+        }
+
+        function closeAddPromotionModal() {
+            addPromotionModal.style.display = 'none';
+        }
+
+        function populatePromotionTemplates() {
+            promotionTemplate.innerHTML = '<option value=""></option>';
+            promotions.forEach((promo, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = promo.name;
+                promotionTemplate.appendChild(option);
+            });
+        }
+
+        function handleAddPromotion(e) {
+            e.preventDefault();
+            const templateIndex = promotionTemplate.value;
+            const newName = newPromotionName.value.trim();
+            
+            if (!newName) {
+                alert('Please enter a name for the new promotion.');
+                return;
+            }
+            
+            let newPromo;
+            if (templateIndex !== '') {
+                newPromo = {...promotions[templateIndex]};
+                newPromo.name = newName;
+            } else {
+                newPromo = {
+                    name: newName,
+                    discount: 0,
+                    startDate: null,
+                    endDate: null
+                };
+            }
+            
+            promotions.push(newPromo);
+            populatePromotionDropdown();
+            populatePromotionsTable();
+            closeAddPromotionModal();
+
+            // Clear the form
+            newPromotionName.value = '';
+            promotionTemplate.value = '';
+
+            // Update promotion days tally
+            const totalPromoDays = calculatePromotionDays(promotions);
+            document.getElementById('total-promo-days').textContent = totalPromoDays;
+        }
+
+        // Call initial functions
+        if (currentProduct) {
+            loadProductData(currentProduct);
+        }
+    });
+    </script>
+</body>
 </html>
+          </body>
+        </html>
