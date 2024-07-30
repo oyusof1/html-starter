@@ -1,642 +1,636 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2761
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww35640\viewh20780\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Planning and Forecasting Dashboard</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .page-content {
+            padding: 24px;
+        }
+        .mdl-card {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+        .mdl-data-table {
+            width: 100%;
+            white-space: normal;
+        }
+        .mdl-data-table td, .mdl-data-table th {
+            text-align: center;
+            padding: 8px 4px;
+        }
+        .mdl-data-table .notes-column {
+            width: 15%;
+        }
+        .mdl-data-table td.mdl-data-table__cell--non-numeric {
+            text-align: left;
+        }
+        .mdl-typography--text-right {
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+        #weekly-view {
+            display: none;
+        }
+        .view-toggle {
+            margin: 20px 0;
+        }
+        .year-group-2023 {
+            background-color: #F5F5F5;
+        }
+        .year-group-2024 {
+            background-color: #FFFFFF;
+        }
+        .add-promotion-btn {
+            margin: 20px 0;
+            display: block;
+        }
+        .editable-notes {
+            min-height: 1.5em;
+            padding: 4px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s;
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .editable-notes:hover, .editable-notes:focus {
+            border-color: rgba(0, 0, 0, 0.12);
+            outline: none;
+            white-space: normal;
+            overflow: visible;
+            max-width: none;
+        }
+        .price-ranking-1, .price-ranking-2, .price-ranking-3 {
+            background-color: #c8e6c9;
+        }
+        .price-ranking-9, .price-ranking-10, .price-ranking-11 {
+            background-color: #ffcdd2;
+        }
+        #sortButton {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .week-row {
+    cursor: pointer;
+}
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="en">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Price Planning and Forecasting Dashboard</title>\
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">\
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">\
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>\
-     <style>\
-        body \{\
-            font-family: 'Roboto', sans-serif;\
-            margin: 0;\
-            padding: 20px;\
-            background-color: #f5f5f5;\
-        \}\
-        .page-content \{\
-            padding: 24px;\
-        \}\
-        .mdl-card \{\
-            width: 100%;\
-            margin-bottom: 24px;\
-        \}\
-        .mdl-data-table \{\
-            width: 100%;\
-            white-space: normal;\
-        \}\
-        .mdl-data-table td, .mdl-data-table th \{\
-            text-align: center;\
-            padding: 8px 4px;\
-        \}\
-        .mdl-data-table .notes-column \{\
-            width: 15%;\
-        \}\
-        .mdl-data-table td.mdl-data-table__cell--non-numeric \{\
-            text-align: left;\
-        \}\
-        .mdl-typography--text-right \{\
-    padding: 15px;\
-    margin-top: 15px;\
-    background-color: #f5f5f5;\
-    border-radius: 4px;\
-\}\
-        #weekly-view \{\
-            display: none;\
-        \}\
-        .view-toggle \{\
-            margin: 20px 0;\
-        \}\
-        .year-group-2023 \{\
-            background-color: #F5F5F5;\
-        \}\
-        .year-group-2024 \{\
-            background-color: #FFFFFF;\
-        \}\
-        .add-promotion-btn \{\
-            margin: 20px 0;\
-            display: block;\
-        \}\
-        .editable-notes \{\
-            min-height: 1.5em;\
-            padding: 4px;\
-            border: 1px solid transparent;\
-            transition: border-color 0.3s;\
-            max-width: 200px;\
-            white-space: nowrap;\
-            overflow: hidden;\
-            text-overflow: ellipsis;\
-        \}\
-        .editable-notes:hover, .editable-notes:focus \{\
-            border-color: rgba(0, 0, 0, 0.12);\
-            outline: none;\
-            white-space: normal;\
-            overflow: visible;\
-            max-width: none;\
-        \}\
-        .price-ranking-1, .price-ranking-2, .price-ranking-3 \{\
-            background-color: #c8e6c9;\
-        \}\
-        .price-ranking-9, .price-ranking-10, .price-ranking-11 \{\
-            background-color: #ffcdd2;\
-        \}\
-        #sortButton \{\
-            cursor: pointer;\
-            text-decoration: underline;\
-        \}\
-        .week-row \{\
-    cursor: pointer;\
-\}\
-\
-.expand-icon \{\
-    vertical-align: middle;\
-    margin-right: 5px;\
-\}\
-\
-.daily-table \{\
-    width: 100%;\
-    border-collapse: collapse;\
-\}\
-\
-.daily-table th, .daily-table td \{\
-    border: 1px solid #ddd;\
-    padding: 8px;\
-    text-align: left;\
-\}\
-\
-.daily-table th \{\
-    background-color: #f2f2f2;\
-\}\
-    </style>\
-</head>\
-<body>\
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">\
-        <header class="mdl-layout__header">\
-            <div class="mdl-layout__header-row">\
-                <span class="mdl-layout-title">Price Planning and Forecasting Dashboard</span>\
-            </div>\
-        </header>\
-        <main class="mdl-layout__content">\
-            <div class="page-content">\
-                <!-- START: White Ticket Section -->\
-                <div class="mdl-card mdl-shadow--2dp">\
-                    <div class="mdl-card__title">\
-                        <h2 class="mdl-card__title-text">White Ticket</h2>\
-                    </div>\
-                    <div class="mdl-card__supporting-text">\
-                        <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">\
-                            <thead>\
-                                <tr>\
-                                    <th class="mdl-data-table__cell--non-numeric">White Ticket</th>\
-                                    <th>$9.99</th>\
-                                    <th>$10.99</th>\
-                                    <th>$11.99</th>\
-                                    <th>$12.99</th>\
-                                    <th>$13.99</th>\
-                                    <th>$14.99</th>\
-                                    <th>$15.99</th>\
-                                    <th>$16.99</th>\
-                                    <th>$17.99</th>\
-                                    <th>$18.99</th>\
-                                    <th>$19.99</th>\
-                                </tr>\
-                            </thead>\
-                            <tbody>\
-                                <tr>\
-                                    <td class="mdl-data-table__cell--non-numeric">Cost</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                    <td>5.75</td>\
-                                </tr>\
-                                <tr>\
-                                    <td class="mdl-data-table__cell--non-numeric">Projected Units</td>\
-                                    <td>3824</td>\
-                                    <td>3258</td>\
-                                    <td>2782</td>\
-                                    <td>2382</td>\
-                                    <td>2045</td>\
-                                    <td>1762</td>\
-                                    <td>1524</td>\
-                                    <td>1325</td>\
-                                    <td>1159</td>\
-                                    <td>1020</td>\
-                                    <td>904</td>\
-                                </tr>\
-                                <tr>\
-                                    <td class="mdl-data-table__cell--non-numeric">Projected Sales</td>\
-                                    <td>16213</td>\
-                                    <td>17076</td>\
-                                    <td>17364</td>\
-                                    <td>17247</td>\
-                                    <td>16853</td>\
-                                    <td>16283</td>\
-                                    <td>15613</td>\
-                                    <td>14900</td>\
-                                    <td>14187</td>\
-                                    <td>13504</td>\
-                                    <td>12874</td>\
-                                </tr>\
-                                <tr>\
-                                    <td id="sortButton" class="mdl-data-table__cell--non-numeric">Price Ranking (click to sort)</td>\
-                                    <td>6</td>\
-                                    <td class="price-ranking-3">3</td>\
-                                    <td class="price-ranking-1">1</td>\
-                                    <td class="price-ranking-2">2</td>\
-                                    <td>4</td>\
-                                    <td>5</td>\
-                                    <td>7</td>\
-                                    <td>8</td>\
-                                    <td class="price-ranking-9">9</td>\
-                                    <td class="price-ranking-10">10</td>\
-                                    <td class="price-ranking-11">11</td>\
-                                </tr>\
-                            </tbody>\
-                        </table>\
-                    </div>\
-                </div>\
-                <!-- END: White Ticket Section -->\
-\
-                <!-- START: Promotional Calendar Section -->\
-                <div class="mdl-card mdl-shadow--2dp content-card">\
-                    <div class="mdl-card__title">\
-                        <h2 class="mdl-card__title-text">Promotional Calendar</h2>\
-                    </div>\
-                    <div class="mdl-card__supporting-text">\
-                        <div class="view-toggle">\
-                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="view-toggle">\
-                                <input type="checkbox" id="view-toggle" class="mdl-switch__input">\
-                                <span class="mdl-switch__label">Show Weekly Data - Last Year</span>\
-                            </label>\
-                        </div>\
-                        \
-                        <div id="yearly-view">\
-                            <h4>Historical Data (2023)</h4>\
-                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data-2023">\
-                                <thead>\
-                                    <tr>\
-                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>\
-                                        <th>Price</th>\
-                                        <th>OTD/AUR</th>\
-                                        <th class="mdl-data-table__cell--non-numeric">Dates</th>\
-                                        <th>Units</th>\
-                                        <th>Sales</th>\
-                                    </tr>\
-                                </thead>\
-                                <tbody>\
-                                    <!-- Example data, add actual data here -->\
-                                    <tr class="year-group-2023">\
-                                        <td class="mdl-data-table__cell--non-numeric">Regular Price</td>\
-                                        <td>$20.00</td>\
-                                        <td>$20.00</td>\
-                                        <td class="mdl-data-table__cell--non-numeric">Jan 1 - Dec 31</td>\
-                                        <td>50,000</td>\
-                                        <td>$1,000,000.00</td>\
-                                    </tr>\
-                                    <tr class="year-group-2023">\
-                                        <td class="mdl-data-table__cell--non-numeric">Black Friday</td>\
-                                        <td>$15.00</td>\
-                                        <td>$15.00</td>\
-                                        <td class="mdl-data-table__cell--non-numeric">Nov 23 - Nov 26</td>\
-                                        <td>10,000</td>\
-                                        <td>$150,000.00</td>\
-                                    </tr>\
-                                    <!-- More rows as needed -->\
-                                </tbody>\
-                            </table>\
-                        </div>\
-\
-                        <div id="weekly-view" style="display: none;">\
-                            <table class="mdl-data-table mdl-js-data-table" id="weekly-data">\
-                                <thead>\
-                                    <tr>\
-                                        <th class="mdl-data-table__cell--non-numeric">Week</th>\
-                                        <th>Price</th>\
-                                        <th>OTD/AUR</th>\
-                                        <th>Units</th>\
-                                        <th>Revenue</th>\
-                                        <th>Inventory</th>\
-                                        <th>MMU</th>\
-                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>\
-                                        <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>\
-                                    </tr>\
-                                </thead>\
-                                <tbody>\
-                                    <!-- Weekly data will be populated here -->\
-                                </tbody>\
-                            </table>\
-                        </div>\
-                    </div>\
-                </div>\
-                <!-- END: Promotional Calendar Section -->\
-\
-                <!-- Interactive Forecasting Tool Card -->\
-                <div class="mdl-card mdl-shadow--2dp content-card">\
-                    <div class="mdl-card__title">\
-                        <h2 class="mdl-card__title-text">Scenario Tool</h2>\
-                    </div>\
-                    <div class="mdl-card__supporting-text">\
-                        <form id="forecast-form" class="forecast-form">\
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">\
-                                <select class="mdl-textfield__input" id="promotion-select">\
-                                    <!-- Options will be populated by JavaScript -->\
-                                </select>\
-                                <label class="mdl-textfield__label" for="promotion-select">Select Promotion</label>\
-                            </div>\
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">\
-                                <input class="mdl-textfield__input" type="number" id="price" step="0.01" min="0">\
-                                <label class="mdl-textfield__label" for="price">Enter New Price</label>\
-                            </div>\
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">\
-                                Calculate Forecast\
-                            </button>\
-                        </form>\
-                        <div id="forecast-results" class="forecast-results">\
-                            <p>Projected Units: <span id="calculated-units"></span></p>\
-                            <p>Projected Revenue: <span id="calculated-revenue"></span></p>\
-                        </div>\
-                        <button type="button" id="update-table" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="display:none;">\
-                            Update Table with New Forecast\
-                        </button>\
-                    </div>\
-                </div>\
-\
-                <!-- Promotions Table Card -->\
-                <div class="mdl-card mdl-shadow--2dp content-card">\
-                    <div class="mdl-card__title">\
-                        <h2 class="mdl-card__title-text">Promotions Data (2024 Projected)</h2>\
-                    </div>\
-                    <div class="mdl-card__supporting-text">\
-                        <table class="mdl-data-table mdl-js-data-table" id="promotions-data">\
-                            <thead>\
-                                <tr>\
-                                    <th class="mdl-data-table__cell--non-numeric">Promotion</th>\
-                                    <th>Price</th>\
-                                    <th>OTD/AUR</th>\
-                                    <th class="mdl-data-table__cell--non-numeric">Dates</th>\
-                                    <th>Units</th>\
-                                    <th>Sales</th>\
-                                </tr>\
-                            </thead>\
-                            <tbody>\
-                                <!-- Promotion rows will be populated by JavaScript -->\
-                            </tbody>\
-                        </table>\
-                    </div>\
-                </div>\
-            </div>\
-        </main>\
-    </div>\
-\
-    <script>\
-    // Wait for the DOM to be fully loaded before running any scripts\
-    document.addEventListener('DOMContentLoaded', function() \{\
-\
-        // ==================== WHITE TICKET SECTION ====================\
-        \
-        // Variable to track sorting direction\
-        let ascending = true;\
-\
-        // Add click event listener to the sort button\
-        document.getElementById('sortButton').addEventListener('click', sortColumns);\
-\
-        /**\
-         * Function to sort columns in the White Ticket table\
-         */\
-        function sortColumns() \{\
-            // Get the White Ticket table\
-            const table = document.getElementById('white-ticket-table');\
-            // Convert table rows to an array\
-            const rows = Array.from(table.rows);\
-            // Get the last row (price ranking row)\
-            const priceRankingRow = rows[rows.length - 1];\
-            // Get the header row\
-            const headerRow = rows[0];\
-            // Get all cells in the price ranking row except the first one\
-            const columns = Array.from(priceRankingRow.cells).slice(1);\
-\
-            // Sort the columns based on the price ranking\
-            columns.sort((a, b) => \{\
-                const rankA = parseInt(a.textContent);\
-                const rankB = parseInt(b.textContent);\
-                return ascending ? rankA - rankB : rankB - rankA;\
-            \});\
-\
-            // Rearrange the columns in the table\
-            for (let i = 0; i < columns.length; i++) \{\
-                const columnIndex = columns[i].cellIndex;\
-                for (let j = 0; j < rows.length; j++) \{\
-                    const cell = rows[j].cells[columnIndex];\
-                    rows[j].appendChild(cell);\
-                \}\
-            \}\
-\
-            // Toggle sorting direction for next click\
-            ascending = !ascending;\
-        \}\
-        \
-        // DOM elements\
-        const form = document.getElementById('forecast-form');\
-        const updateTableButton = document.getElementById('update-table');\
-        const promotionSelect = document.getElementById('promotion-select');\
-        const promotionsTable = document.getElementById('promotions-data');\
-        const priceInput = document.getElementById('price');\
-        const calculatedUnitsElement = document.getElementById('calculated-units');\
-        const calculatedRevenueElement = document.getElementById('calculated-revenue');\
-        const viewToggle = document.getElementById('view-toggle');\
-        const yearlyView = document.getElementById('yearly-view');\
-        const weeklyView = document.getElementById('weekly-view');\
-\
-        // State variables\
-        let calculatedUnits, calculatedRevenue;\
-        let currentProduct = \{ price: 84.99 \}; // Example product\
-\
-        // Sample promotions data\
-        const promotions = [\
-            \{ name: "Regular Price", discount: 0, startDate: null, endDate: null \},\
-            \{ name: "Summer Sale", discount: 0.2, startDate: '2024-06-01', endDate: '2024-07-04' \},\
-            \{ name: "Black Friday", discount: 0.3, startDate: '2024-11-23', endDate: '2024-11-26' \}\
-        ];\
-\
-        // Event Listeners\
-        form.addEventListener('submit', handleForecastSubmit);\
-        updateTableButton.addEventListener('click', updateTablesAndClear);\
-        viewToggle.addEventListener('change', toggleView);\
-\
-        // Initialize\
-        populatePromotionDropdown();\
-        populatePromotionsTable();\
-\
-        // Functions\
-        function handleForecastSubmit(e) \{\
-            e.preventDefault();\
-            const price = parseFloat(priceInput.value);\
-            \
-            // Dummy calculation (replace with actual forecast logic)\
-            calculatedUnits = Math.round(100000 / price);\
-            calculatedRevenue = price * calculatedUnits;\
-\
-            calculatedUnitsElement.textContent = calculatedUnits.toLocaleString();\
-            calculatedRevenueElement.textContent = '$' + calculatedRevenue.toLocaleString(undefined, \{minimumFractionDigits: 2, maximumFractionDigits: 2\});\
-            \
-            updateTableButton.style.display = 'inline-block';\
-        \}\
-\
-        function updateTablesAndClear() \{\
-            const price = parseFloat(priceInput.value);\
-            const selectedPromoIndex = parseInt(promotionSelect.value);\
-            \
-            const row = promotionsTable.querySelector(`tbody tr:nth-child($\{selectedPromoIndex + 1\})`);\
-            if (row) \{\
-                row.cells[1].textContent = '$' + price.toFixed(2);\
-                row.cells[2].textContent = '$' + price.toFixed(2);\
-                row.cells[4].textContent = calculatedUnits.toLocaleString();\
-                row.cells[5].textContent = '$' + calculatedRevenue.toFixed(2);\
-            \}\
-            \
-            // Clear calculations\
-            calculatedUnits = null;\
-            calculatedRevenue = null;\
-            calculatedUnitsElement.textContent = '';\
-            calculatedRevenueElement.textContent = '';\
-            priceInput.value = '';\
-\
-            // Hide update button and remove 'is-dirty' class from price input\
-            updateTableButton.style.display = 'none';\
-            priceInput.parentElement.classList.remove('is-dirty');\
-        \}\
-\
-        function populatePromotionDropdown() \{\
-            promotionSelect.innerHTML = '';\
-            promotions.forEach((promo, index) => \{\
-                const option = document.createElement('option');\
-                option.value = index;\
-                const price = currentProduct ? currentProduct.price * (1 - promo.discount) : 0;\
-                let dateRange = '';\
-                if (promo.startDate && promo.endDate) \{\
-                    dateRange = ` ($\{promo.startDate\} to $\{promo.endDate\})`;\
-                \}\
-                option.textContent = `$\{promo.name\}$\{dateRange\} (Current: $$\{price.toFixed(2)\})`;\
-                promotionSelect.appendChild(option);\
-            \});\
-        \}\
-\
-        function populatePromotionsTable() \{\
-            const tbody = promotionsTable.querySelector('tbody');\
-            tbody.innerHTML = '';\
-\
-            promotions.forEach((promo, index) => \{\
-                const row = tbody.insertRow();\
-                const price = currentProduct.price * (1 - promo.discount);\
-                row.innerHTML = `\
-                    <td class="mdl-data-table__cell--non-numeric">$\{promo.name\}</td>\
-                    <td>$$\{price.toFixed(2)\}</td>\
-                    <td>$$\{price.toFixed(2)\}</td>\
-                    <td class="mdl-data-table__cell--non-numeric">$\{promo.startDate || ''\} - $\{promo.endDate || ''\}</td>\
-                    <td>30,000</td>\
-                    <td>$$\{(price * 30000).toFixed(2)\}</td>\
-                `;\
-            \});\
-        \}\
-\
-        function toggleView() \{\
-            if (viewToggle.checked) \{\
-                yearlyView.style.display = 'none';\
-                weeklyView.style.display = 'block';\
-                populateWeeklyData();\
-            \} else \{\
-                yearlyView.style.display = 'block';\
-                weeklyView.style.display = 'none';\
-            \}\
-        \}\
-\
-        function populateWeeklyData() \{\
-            // Sample weekly data\
-            const weeklyData = [\
-                \{ week: 1, price: 79.99, otdAur: 79.99, units: 577, revenue: 46155.23, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" \},\
-                \{ week: 2, price: 79.99, otdAur: 79.99, units: 592, revenue: 47354.08, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" \},\
-                \{ week: 5, price: 79.99, otdAur: 79.99, units: 600, revenue: 47994.00, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" \},\
-                \{ week: 9, price: 74.99, otdAur: 74.99, units: 800, revenue: 59992.00, inventory: 8008, mmu: "45%", promotion: "Spring Sale", notes: "" \},\
-                \{ week: 14, price: 74.99, otdAur: 74.99, units: 850, revenue: 63741.50, inventory: 7158, mmu: "45%", promotion: "Spring Sale", notes: "" \},\
-                \{ week: 18, price: 69.99, otdAur: 69.99, units: 1000, revenue: 69990.00, inventory: 6158, mmu: "40%", promotion: "Memorial Day Sale", notes: "" \},\
-                \{ week: 22, price: 59.99, otdAur: 59.99, units: 1200, revenue: 71988.00, inventory: 4958, mmu: "35%", promotion: "Summer Kickoff", notes: "" \},\
-                \{ week: 27, price: 64.99, otdAur: 64.99, units: 1100, revenue: 71489.00, inventory: 3858, mmu: "40%", promotion: "Independence Day Sale", notes: "" \},\
-                \{ week: 31, price: 69.99, otdAur: 69.99, units: 950, revenue: 66490.50, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" \},\
-                \{ week: 36, price: 74.99, otdAur: 74.99, units: 800, revenue: 59992.00, inventory: 2108, mmu: "50%", promotion: "Fall Collection Launch", notes: "" \},\
-                \{ week: 40, price: 79.99, otdAur: 79.99, units: 700, revenue: 55993.00, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" \},\
-                \{ week: 45, price: 59.99, otdAur: 59.99, units: 1500, revenue: 89985.00, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" \},\
-                \{ week: 49, price: 69.99, otdAur: 69.99, units: 1000, revenue: 69990.00, inventory: -1092, mmu: "40%", promotion: "Holiday Sale", notes: "" \},\
-            ];\
-\
-            const tbody = document.querySelector('#weekly-data tbody');\
-            tbody.innerHTML = '';\
-\
-            weeklyData.forEach((week, index) => \{\
-                const weekRow = tbody.insertRow();\
-                weekRow.classList.add('week-row');\
-                weekRow.innerHTML = `\
-                    <td class="mdl-data-table__cell--non-numeric">\
-                        <i class="material-icons expand-icon">add_circle_outline</i> Week $\{week.week\}\
-                    </td>\
-                    <td>$$\{week.price.toFixed(2)\}</td>\
-                    <td>$$\{week.otdAur.toFixed(2)\}</td>\
-                    <td>$\{week.units.toLocaleString()\}</td>\
-                    <td>$$\{week.revenue.toFixed(2)\}</td>\
-                    <td>$\{week.inventory.toLocaleString()\}</td>\
-                    <td>$\{week.mmu\}</td>\
-                    <td class="mdl-data-table__cell--non-numeric">$\{week.promotion\}</td>\
-                    <td class="mdl-data-table__cell--non-numeric notes-column">\
-                        <div contenteditable="true" class="editable-notes" data-table="weekly" data-row="$\{index\}">$\{week.notes\}</div>\
-                    </td>\
-                `;\
-\
-                // Add click event to expand/collapse\
-                weekRow.querySelector('.expand-icon').addEventListener('click', function() \{\
-                    toggleDailyData(this, week.week);\
-                \});\
-\
-                // Create a row for daily data (initially hidden)\
-                const dailyRow = tbody.insertRow();\
-                dailyRow.classList.add('daily-data');\
-                dailyRow.style.display = 'none';\
-                dailyRow.innerHTML = `\
-                    <td colspan="9">\
-                        <table class="mdl-data-table mdl-js-data-table daily-table">\
-                            <thead>\
-                                <tr>\
-                                    <th>Day</th> \
-                                    <th>Price</th>\
-                                    <th>Units</th>\
-                                    <th>Revenue</th>\
-                                    <th>Marketing</th>\
-                                    <th>Promotion</th>\
-                                </tr>\
-                            </thead>\
-                            <tbody>\
-                                <!-- Daily data will be populated here -->\
-                            </tbody>\
-                        </table>\
-                    </td>\
-                `;\
-            \});\
-\
-            addTotals(weeklyData);\
-        \}\
-\
-        function addTotals(data) \{\
-            const totals = data.reduce((acc, week) => \{\
-                acc.units += week.units;\
-                acc.revenue += week.revenue;\
-                return acc;\
-            \}, \{ units: 0, revenue: 0 \});\
-\
-            const tbody = document.querySelector('#weekly-data tbody');\
-            const totalRow = tbody.insertRow();\
-            totalRow.innerHTML = `\
-                <td colspan="3" class="mdl-data-table__cell--non-numeric"><strong>Total</strong></td>\
-                <td><strong>$\{totals.units.toLocaleString()\}</strong></td>\
-                <td><strong>$$\{totals.revenue.toFixed(2)\}</strong></td>\
-                <td colspan="4"></td>\
-            `;\
-        \}\
-\
-        function toggleDailyData(icon, weekNumber) \{\
-            const weekRow = icon.closest('tr');\
-            const dailyRow = weekRow.nextElementSibling;\
-            const isExpanded = icon.textContent === 'remove_circle_outline';\
-\
-            if (isExpanded) \{\
-                icon.textContent = 'add_circle_outline';\
-                dailyRow.style.display = 'none';\
-            \} else \{\
-                icon.textContent = 'remove_circle_outline';\
-                dailyRow.style.display = 'table-row';\
-                populateDailyData(dailyRow, weekNumber);\
-            \}\
-        \}\
-\
-        function populateDailyData(dailyRow, weekNumber) \{\
-            const dailyTable = dailyRow.querySelector('.daily-table tbody');\
-            dailyTable.innerHTML = '';\
-\
-            // Sample daily data - replace with your actual data\
-            const dailyData = [\
-                \{ day: 'Monday', price: 79.99, units: 100, revenue: 7999, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' \},\
-                \{ day: 'Tuesday', price: 79.99, units: 95, revenue: 7599.05, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' \},\
-                \{ day: 'Wednesday', price: 79.99, units: 105, revenue: 8398.95, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' \},\
-                \{ day: 'Thursday', price: 74.99, units: 90, revenue: 6749.10, marketing: 'Mystery Offer 45%', promotion: 'Flash Sale' \},\
-                \{ day: 'Friday', price: 74.99, units: 110, revenue: 8248.90, marketing: 'Mystery Offer 45%', promotion: 'Flash Sale' \},\
-                \{ day: 'Saturday', price: 79.99, units: 130, revenue: 10398.70, marketing: 'Mystery Offer 45%', promotion: 'Weekend Special' \},\
-                \{ day: 'Sunday', price: 79.99, units: 120, revenue: 9598.80, marketing: 'Mystery Offer 45%', promotion: 'Weekend Special' \}\
-            ];\
-\
-            dailyData.forEach(day => \{\
-                const row = dailyTable.insertRow();\
-                row.innerHTML = `\
-                    <td>$\{day.day\}</td>\
-                    <td>$$\{day.price.toFixed(2)\}</td>\
-                    <td>$\{day.units\}</td>\
-                    <td>$$\{day.revenue.toFixed(2)\}</td>\
-                    <td>$\{day.marketing\}</td>\
-                    <td>$\{day.promotion\}</td>\
-                `;\
-            \});\
-        \}\
-    \});\
-    </script>\
-</body>\
-</html>}
+.expand-icon {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.daily-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.daily-table th, .daily-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.daily-table th {
+    background-color: #f2f2f2;
+}
+    </style>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Price Planning and Forecasting Dashboard</span>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- START: White Ticket Section -->
+                <div class="mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">White Ticket</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">White Ticket</th>
+                                    <th>$9.99</th>
+                                    <th>$10.99</th>
+                                    <th>$11.99</th>
+                                    <th>$12.99</th>
+                                    <th>$13.99</th>
+                                    <th>$14.99</th>
+                                    <th>$15.99</th>
+                                    <th>$16.99</th>
+                                    <th>$17.99</th>
+                                    <th>$18.99</th>
+                                    <th>$19.99</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Cost</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                    <td>5.75</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Projected Units</td>
+                                    <td>3824</td>
+                                    <td>3258</td>
+                                    <td>2782</td>
+                                    <td>2382</td>
+                                    <td>2045</td>
+                                    <td>1762</td>
+                                    <td>1524</td>
+                                    <td>1325</td>
+                                    <td>1159</td>
+                                    <td>1020</td>
+                                    <td>904</td>
+                                </tr>
+                                <tr>
+                                    <td class="mdl-data-table__cell--non-numeric">Projected Sales</td>
+                                    <td>16213</td>
+                                    <td>17076</td>
+                                    <td>17364</td>
+                                    <td>17247</td>
+                                    <td>16853</td>
+                                    <td>16283</td>
+                                    <td>15613</td>
+                                    <td>14900</td>
+                                    <td>14187</td>
+                                    <td>13504</td>
+                                    <td>12874</td>
+                                </tr>
+                                <tr>
+                                    <td id="sortButton" class="mdl-data-table__cell--non-numeric">Price Ranking (click to sort)</td>
+                                    <td>6</td>
+                                    <td class="price-ranking-3">3</td>
+                                    <td class="price-ranking-1">1</td>
+                                    <td class="price-ranking-2">2</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>7</td>
+                                    <td>8</td>
+                                    <td class="price-ranking-9">9</td>
+                                    <td class="price-ranking-10">10</td>
+                                    <td class="price-ranking-11">11</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END: White Ticket Section -->
+
+                <!-- START: Promotional Calendar Section -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Promotional Calendar</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <div class="view-toggle">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="view-toggle">
+                                <input type="checkbox" id="view-toggle" class="mdl-switch__input">
+                                <span class="mdl-switch__label">Show Weekly Data - Last Year</span>
+                            </label>
+                        </div>
+                        
+                        <div id="yearly-view">
+                            <h4>Historical Data (2023)</h4>
+                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data-2023">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                        <th>Price</th>
+                                        <th>OTD/AUR</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Dates</th>
+                                        <th>Units</th>
+                                        <th>Sales</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Example data, add actual data here -->
+                                    <tr class="year-group-2023">
+                                        <td class="mdl-data-table__cell--non-numeric">Regular Price</td>
+                                        <td>$20.00</td>
+                                        <td>$20.00</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Jan 1 - Dec 31</td>
+                                        <td>50,000</td>
+                                        <td>$1,000,000.00</td>
+                                    </tr>
+                                    <tr class="year-group-2023">
+                                        <td class="mdl-data-table__cell--non-numeric">Black Friday</td>
+                                        <td>$15.00</td>
+                                        <td>$15.00</td>
+                                        <td class="mdl-data-table__cell--non-numeric">Nov 23 - Nov 26</td>
+                                        <td>10,000</td>
+                                        <td>$150,000.00</td>
+                                    </tr>
+                                    <!-- More rows as needed -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div id="weekly-view" style="display: none;">
+                            <table class="mdl-data-table mdl-js-data-table" id="weekly-data">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Week</th>
+                                        <th>Price</th>
+                                        <th>OTD/AUR</th>
+                                        <th>Units</th>
+                                        <th>Revenue</th>
+                                        <th>Inventory</th>
+                                        <th>MMU</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                        <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Weekly data will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: Promotional Calendar Section -->
+
+                <!-- Interactive Forecasting Tool Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Scenario Tool</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <form id="forecast-form" class="forecast-form">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select class="mdl-textfield__input" id="promotion-select">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                                <label class="mdl-textfield__label" for="promotion-select">Select Promotion</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="price" step="0.01" min="0">
+                                <label class="mdl-textfield__label" for="price">Enter New Price</label>
+                            </div>
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Calculate Forecast
+                            </button>
+                        </form>
+                        <div id="forecast-results" class="forecast-results">
+                            <p>Projected Units: <span id="calculated-units"></span></p>
+                            <p>Projected Revenue: <span id="calculated-revenue"></span></p>
+                        </div>
+                        <button type="button" id="update-table" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" style="display:none;">
+                            Update Table with New Forecast
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Promotions Table Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Promotions Data (2024 Projected)</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                    <th>Price</th>
+                                    <th>OTD/AUR</th>
+                                    <th class="mdl-data-table__cell--non-numeric">Dates</th>
+                                    <th>Units</th>
+                                    <th>Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Promotion rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    // Wait for the DOM to be fully loaded before running any scripts
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // ==================== WHITE TICKET SECTION ====================
+        
+        // Variable to track sorting direction
+        let ascending = true;
+
+        // Add click event listener to the sort button
+        document.getElementById('sortButton').addEventListener('click', sortColumns);
+
+        /**
+         * Function to sort columns in the White Ticket table
+         */
+        function sortColumns() {
+            // Get the White Ticket table
+            const table = document.getElementById('white-ticket-table');
+            // Convert table rows to an array
+            const rows = Array.from(table.rows);
+            // Get the last row (price ranking row)
+            const priceRankingRow = rows[rows.length - 1];
+            // Get the header row
+            const headerRow = rows[0];
+            // Get all cells in the price ranking row except the first one
+            const columns = Array.from(priceRankingRow.cells).slice(1);
+
+            // Sort the columns based on the price ranking
+            columns.sort((a, b) => {
+                const rankA = parseInt(a.textContent);
+                const rankB = parseInt(b.textContent);
+                return ascending ? rankA - rankB : rankB - rankA;
+            });
+
+            // Rearrange the columns in the table
+            for (let i = 0; i < columns.length; i++) {
+                const columnIndex = columns[i].cellIndex;
+                for (let j = 0; j < rows.length; j++) {
+                    const cell = rows[j].cells[columnIndex];
+                    rows[j].appendChild(cell);
+                }
+            }
+
+            // Toggle sorting direction for next click
+            ascending = !ascending;
+        }
+        
+        // DOM elements
+        const form = document.getElementById('forecast-form');
+        const updateTableButton = document.getElementById('update-table');
+        const promotionSelect = document.getElementById('promotion-select');
+        const promotionsTable = document.getElementById('promotions-data');
+        const priceInput = document.getElementById('price');
+        const calculatedUnitsElement = document.getElementById('calculated-units');
+        const calculatedRevenueElement = document.getElementById('calculated-revenue');
+        const viewToggle = document.getElementById('view-toggle');
+        const yearlyView = document.getElementById('yearly-view');
+        const weeklyView = document.getElementById('weekly-view');
+
+        // State variables
+        let calculatedUnits, calculatedRevenue;
+        let currentProduct = { price: 84.99 }; // Example product
+
+        // Sample promotions data
+        const promotions = [
+            { name: "Regular Price", discount: 0, startDate: null, endDate: null },
+            { name: "Summer Sale", discount: 0.2, startDate: '2024-06-01', endDate: '2024-07-04' },
+            { name: "Black Friday", discount: 0.3, startDate: '2024-11-23', endDate: '2024-11-26' }
+        ];
+
+        // Event Listeners
+        form.addEventListener('submit', handleForecastSubmit);
+        updateTableButton.addEventListener('click', updateTablesAndClear);
+        viewToggle.addEventListener('change', toggleView);
+
+        // Initialize
+        populatePromotionDropdown();
+        populatePromotionsTable();
+
+        // Functions
+        function handleForecastSubmit(e) {
+            e.preventDefault();
+            const price = parseFloat(priceInput.value);
+            
+            // Dummy calculation (replace with actual forecast logic)
+            calculatedUnits = Math.round(100000 / price);
+            calculatedRevenue = price * calculatedUnits;
+
+            calculatedUnitsElement.textContent = calculatedUnits.toLocaleString();
+            calculatedRevenueElement.textContent = '$' + calculatedRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            updateTableButton.style.display = 'inline-block';
+        }
+
+        function updateTablesAndClear() {
+            const price = parseFloat(priceInput.value);
+            const selectedPromoIndex = parseInt(promotionSelect.value);
+            
+            const row = promotionsTable.querySelector(`tbody tr:nth-child(${selectedPromoIndex + 1})`);
+            if (row) {
+                row.cells[1].textContent = '$' + price.toFixed(2);
+                row.cells[2].textContent = '$' + price.toFixed(2);
+                row.cells[4].textContent = calculatedUnits.toLocaleString();
+                row.cells[5].textContent = '$' + calculatedRevenue.toFixed(2);
+            }
+            
+            // Clear calculations
+            calculatedUnits = null;
+            calculatedRevenue = null;
+            calculatedUnitsElement.textContent = '';
+            calculatedRevenueElement.textContent = '';
+            priceInput.value = '';
+
+            // Hide update button and remove 'is-dirty' class from price input
+            updateTableButton.style.display = 'none';
+            priceInput.parentElement.classList.remove('is-dirty');
+        }
+
+        function populatePromotionDropdown() {
+            promotionSelect.innerHTML = '';
+            promotions.forEach((promo, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                const price = currentProduct ? currentProduct.price * (1 - promo.discount) : 0;
+                let dateRange = '';
+                if (promo.startDate && promo.endDate) {
+                    dateRange = ` (${promo.startDate} to ${promo.endDate})`;
+                }
+                option.textContent = `${promo.name}${dateRange} (Current: $${price.toFixed(2)})`;
+                promotionSelect.appendChild(option);
+            });
+        }
+
+        function populatePromotionsTable() {
+            const tbody = promotionsTable.querySelector('tbody');
+            tbody.innerHTML = '';
+
+            promotions.forEach((promo, index) => {
+                const row = tbody.insertRow();
+                const price = currentProduct.price * (1 - promo.discount);
+                row.innerHTML = `
+                    <td class="mdl-data-table__cell--non-numeric">${promo.name}</td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td class="mdl-data-table__cell--non-numeric">${promo.startDate || ''} - ${promo.endDate || ''}</td>
+                    <td>30,000</td>
+                    <td>$${(price * 30000).toFixed(2)}</td>
+                `;
+            });
+        }
+
+        function toggleView() {
+            if (viewToggle.checked) {
+                yearlyView.style.display = 'none';
+                weeklyView.style.display = 'block';
+                populateWeeklyData();
+            } else {
+                yearlyView.style.display = 'block';
+                weeklyView.style.display = 'none';
+            }
+        }
+
+        function populateWeeklyData() {
+            // Sample weekly data
+            const weeklyData = [
+                { week: 1, price: 79.99, otdAur: 79.99, units: 577, revenue: 46155.23, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 2, price: 79.99, otdAur: 79.99, units: 592, revenue: 47354.08, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 5, price: 79.99, otdAur: 79.99, units: 600, revenue: 47994.00, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 9, price: 74.99, otdAur: 74.99, units: 800, revenue: 59992.00, inventory: 8008, mmu: "45%", promotion: "Spring Sale", notes: "" },
+                { week: 14, price: 74.99, otdAur: 74.99, units: 850, revenue: 63741.50, inventory: 7158, mmu: "45%", promotion: "Spring Sale", notes: "" },
+                { week: 18, price: 69.99, otdAur: 69.99, units: 1000, revenue: 69990.00, inventory: 6158, mmu: "40%", promotion: "Memorial Day Sale", notes: "" },
+                { week: 22, price: 59.99, otdAur: 59.99, units: 1200, revenue: 71988.00, inventory: 4958, mmu: "35%", promotion: "Summer Kickoff", notes: "" },
+                { week: 27, price: 64.99, otdAur: 64.99, units: 1100, revenue: 71489.00, inventory: 3858, mmu: "40%", promotion: "Independence Day Sale", notes: "" },
+                { week: 31, price: 69.99, otdAur: 69.99, units: 950, revenue: 66490.50, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
+                { week: 36, price: 74.99, otdAur: 74.99, units: 800, revenue: 59992.00, inventory: 2108, mmu: "50%", promotion: "Fall Collection Launch", notes: "" },
+                { week: 40, price: 79.99, otdAur: 79.99, units: 700, revenue: 55993.00, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
+                { week: 45, price: 59.99, otdAur: 59.99, units: 1500, revenue: 89985.00, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
+                { week: 49, price: 69.99, otdAur: 69.99, units: 1000, revenue: 69990.00, inventory: -1092, mmu: "40%", promotion: "Holiday Sale", notes: "" },
+            ];
+
+            const tbody = document.querySelector('#weekly-data tbody');
+            tbody.innerHTML = '';
+
+            weeklyData.forEach((week, index) => {
+                const weekRow = tbody.insertRow();
+                weekRow.classList.add('week-row');
+                weekRow.innerHTML = `
+                    <td class="mdl-data-table__cell--non-numeric">
+                        <i class="material-icons expand-icon">add_circle_outline</i> Week ${week.week}
+                    </td>
+                    <td>$${week.price.toFixed(2)}</td>
+                    <td>$${week.otdAur.toFixed(2)}</td>
+                    <td>${week.units.toLocaleString()}</td>
+                    <td>$${week.revenue.toFixed(2)}</td>
+                    <td>${week.inventory.toLocaleString()}</td>
+                    <td>${week.mmu}</td>
+                    <td class="mdl-data-table__cell--non-numeric">${week.promotion}</td>
+                    <td class="mdl-data-table__cell--non-numeric notes-column">
+                        <div contenteditable="true" class="editable-notes" data-table="weekly" data-row="${index}">${week.notes}</div>
+                    </td>
+                `;
+
+                // Add click event to expand/collapse
+                weekRow.querySelector('.expand-icon').addEventListener('click', function() {
+                    toggleDailyData(this, week.week);
+                });
+
+                // Create a row for daily data (initially hidden)
+                const dailyRow = tbody.insertRow();
+                dailyRow.classList.add('daily-data');
+                dailyRow.style.display = 'none';
+                dailyRow.innerHTML = `
+                    <td colspan="9">
+                        <table class="mdl-data-table mdl-js-data-table daily-table">
+                            <thead>
+                                <tr>
+                                    <th>Day</th> 
+                                    <th>Price</th>
+                                    <th>Units</th>
+                                    <th>Revenue</th>
+                                    <th>Marketing</th>
+                                    <th>Promotion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Daily data will be populated here -->
+                            </tbody>
+                        </table>
+                    </td>
+                `;
+            });
+
+            addTotals(weeklyData);
+        }
+
+        function addTotals(data) {
+            const totals = data.reduce((acc, week) => {
+                acc.units += week.units;
+                acc.revenue += week.revenue;
+                return acc;
+            }, { units: 0, revenue: 0 });
+
+            const tbody = document.querySelector('#weekly-data tbody');
+            const totalRow = tbody.insertRow();
+            totalRow.innerHTML = `
+                <td colspan="3" class="mdl-data-table__cell--non-numeric"><strong>Total</strong></td>
+                <td><strong>${totals.units.toLocaleString()}</strong></td>
+                <td><strong>$${totals.revenue.toFixed(2)}</strong></td>
+                <td colspan="4"></td>
+            `;
+        }
+
+        function toggleDailyData(icon, weekNumber) {
+            const weekRow = icon.closest('tr');
+            const dailyRow = weekRow.nextElementSibling;
+            const isExpanded = icon.textContent === 'remove_circle_outline';
+
+            if (isExpanded) {
+                icon.textContent = 'add_circle_outline';
+                dailyRow.style.display = 'none';
+            } else {
+                icon.textContent = 'remove_circle_outline';
+                dailyRow.style.display = 'table-row';
+                populateDailyData(dailyRow, weekNumber);
+            }
+        }
+
+        function populateDailyData(dailyRow, weekNumber) {
+            const dailyTable = dailyRow.querySelector('.daily-table tbody');
+            dailyTable.innerHTML = '';
+
+            // Sample daily data - replace with your actual data
+            const dailyData = [
+                { day: 'Monday', price: 79.99, units: 100, revenue: 7999, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' },
+                { day: 'Tuesday', price: 79.99, units: 95, revenue: 7599.05, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' },
+                { day: 'Wednesday', price: 79.99, units: 105, revenue: 8398.95, marketing: 'Mystery Offer 45%', promotion: 'Regular Price' },
+                { day: 'Thursday', price: 74.99, units: 90, revenue: 6749.10, marketing: 'Mystery Offer 45%', promotion: 'Flash Sale' },
+                { day: 'Friday', price: 74.99, units: 110, revenue: 8248.90, marketing: 'Mystery Offer 45%', promotion: 'Flash Sale' },
+                { day: 'Saturday', price: 79.99, units: 130, revenue: 10398.70, marketing: 'Mystery Offer 45%', promotion: 'Weekend Special' },
+                { day: 'Sunday', price: 79.99, units: 120, revenue: 9598.80, marketing: 'Mystery Offer 45%', promotion: 'Weekend Special' }
+            ];
+
+            dailyData.forEach(day => {
+                const row = dailyTable.insertRow();
+                row.innerHTML = `
+                    <td>${day.day}</td>
+                    <td>$${day.price.toFixed(2)}</td>
+                    <td>${day.units}</td>
+                    <td>$${day.revenue.toFixed(2)}</td>
+                    <td>${day.marketing}</td>
+                    <td>${day.promotion}</td>
+                `;
+            });
+        }
+    });
+    </script>
+</body>
+</html>
+
