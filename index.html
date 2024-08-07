@@ -567,13 +567,13 @@ updateWhiteTicketTable('Price strategy 1');
 
             // COMMENT 11: Sample promotions data
             const promotions = [
-                { name: "Regular Price", currentPrice: 2, discount: 0 },
-                { name: "LPS", currentPrice: 3, discount: 0 },
-                { name: "Two Day Sale", currentPrice: 4, discount: 0 },
-                { name: "EPIC deals", currentPrice: 3, discount: 0 },
-                { name: "Credit Event", currentPrice: 3, discount: 0 },
-                { name: "Summer Sale", currentPrice: 3, discount: 0 },
-                { name: "Black Friday", currentPrice: 3, discount: 0 },
+                { name: "Regular Price", currentPrice: 19.99, discount: 0 },
+                { name: "LPS", currentPrice: 12.99, discount: 0 },
+                { name: "Two Day Sale", currentPrice: 14.99, discount: 0 },
+                { name: "EPIC deals", currentPrice: 10.99, discount: 0 },
+                { name: "Credit Event", currentPrice: 15.99, discount: 0 },
+                { name: "Main Sale", currentPrice: 14.99, discount: 0 },
+                { name: "Black Friday", currentPrice: 10.99, discount: 0 },
             ];
 
             // COMMENT 12: Event Listeners
@@ -721,16 +721,16 @@ updateWhiteTicketTable('Price strategy 1');
                     { week: 1, price: 14.99, AUR: 14.99 * 0.62, units: 577, revenue: 46155.23, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
                     { week: 2, price: 14.99, AUR: 14.99 * 0.62, units: 592, revenue: 47354.08, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
                     { week: 5, price: 14.99, AUR: 14.99 * 0.62, units: 600, revenue: 47994.0, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 8008, mmu: "45%", promotion: "Spring Sale", notes: "" },
-                    { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741.5, inventory: 7158, mmu: "45%", promotion: "Spring Sale", notes: "" },
-                    { week: 18, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990.0, inventory: 6158, mmu: "40%", promotion: "Memorial Day Sale", notes: "" },
-                    { week: 22, price: 14.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988.0, inventory: 4958, mmu: "35%", promotion: "Summer Kickoff", notes: "" },
-                    { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489.0, inventory: 3858, mmu: "40%", promotion: "Independence Day Sale", notes: "" },
+                    { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 8008, mmu: "45%", promotion: "Main Sale", notes: "" },
+                    { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741.5, inventory: 7158, mmu: "45%", promotion: "Main Sale", notes: "" },
+                    { week: 18, price: 14.99, AUR: 14.99 * 0.62, units: 1000, revenue: 69990.0, inventory: 6158, mmu: "40%", promotion: "Regular Price", notes: "" },
+                    { week: 22, price: 13.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988.0, inventory: 4958, mmu: "35%", promotion: "Two Day Sale", notes: "" },
+                    { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489.0, inventory: 3858, mmu: "40%", promotion: "Epic Deals", notes: "" },
                     { week: 31, price: 13.99, AUR: 13.99 * 0.62, units: 950, revenue: 66490.5, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
-                    { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 2108, mmu: "50%", promotion: "Fall Collection Launch", notes: "" },
+                    { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 2108, mmu: "50%", promotion: "Credit Event", notes: "" },
                     { week: 40, price: 14.99, AUR: 14.99 * 0.62, units: 700, revenue: 55993.0, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
                     { week: 45, price: 14.99, AUR: 14.99 * 0.62, units: 1500, revenue: 89985.0, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
-                    { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990.0, inventory: -1092, mmu: "40%", promotion: "Holiday Sale", notes: "" },
+                    { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990.0, inventory: -1092, mmu: "40%", promotion: "Credit Event", notes: "" },
                 ];
 
                 const tbody = document.querySelector("#weekly-data tbody");
@@ -828,13 +828,13 @@ updateWhiteTicketTable('Price strategy 1');
 
                 // Sample daily data - replace with your actual data
                 const dailyData = [
-                    { day: "Monday", price: 14.99, units: 100, revenue: 7999, marketing: "Mystery Offer 45%", promotion: "Regular Price" },
-                    { day: "Tuesday", price: 14.99, units: 95, revenue: 7599.05, marketing: "Mystery Offer 45%", promotion: "Regular Price" },
-                    { day: "Wednesday", price: 14.99, units: 105, revenue: 8398.95, marketing: "Mystery Offer 45%", promotion: "Regular Price" },
-                    { day: "Thursday", price: 11.99, units: 90, revenue: 6749.1, marketing: "Mystery Offer 45%", promotion: "Credit Event" },
-                    { day: "Friday", price: 11.99, units: 110, revenue: 8248.9, marketing: "Mystery Offer 45%", promotion: "Credit Event" },
-                    { day: "Saturday", price: 14.99, units: 130, revenue: 10398.7, marketing: "Mystery Offer 45%", promotion: "Three day sale" },
-                    { day: "Sunday", price: 14.99, units: 120, revenue: 9598.8, marketing: "Mystery Offer 45%", promotion: "Epic Deals" },
+                    { day: "Monday", price: 14.99, units: 100, revenue: 7999, marketing: "45% off Mystery Offer", promotion: "Regular Price" },
+                    { day: "Tuesday", price: 14.99, units: 95, revenue: 7599.05, marketing: "$5 RTKC", promotion: "Regular Price" },
+                    { day: "Wednesday", price: 14.99, units: 105, revenue: 8398.95, marketing: "$20 off $100 offer", promotion: "Regular Price" },
+                    { day: "Thursday", price: 11.99, units: 90, revenue: 6749.1, marketing: "M25% GPO (In Store Use Only)", promotion: "Credit Event" },
+                    { day: "Friday", price: 11.99, units: 110, revenue: 8248.9, marketing: "15% off Credit Event Scratch Off Barcode", promotion: "Credit Event" },
+                    { day: "Saturday", price: 14.99, units: 130, revenue: 10398.7, marketing: "25% off Mystery Offer", promotion: "Three day sale" },
+                    { day: "Sunday", price: 14.99, units: 120, revenue: 9598.8, marketing: "Kohl's Card 30% Offer", promotion: "Epic Deals" },
                 ];
 
                 dailyData.forEach((day) => {
