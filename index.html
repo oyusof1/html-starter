@@ -32,23 +32,25 @@
         }
         /* END: Layout Styles */
 
-        /* START: Table Styles */
-        .mdl-data-table {
-            width: 100%;
-            white-space: normal;
-        }
-        .mdl-data-table td,
-        .mdl-data-table th {
-            text-align: left;
-            padding: 4px 14px;
-        }
-        .mdl-data-table .notes-column {
-            width: 15%;
-        }
-        .mdl-data-table td.mdl-data-table__cell--non-numeric {
-            text-align: left;
-        }
-        /* END: Table Styles */
+           /* START: Table Styles */
+    .mdl-data-table {
+        width: 100%;
+        white-space: normal;
+    }
+    .mdl-data-table td,
+    .mdl-data-table th {
+        text-align: left;
+        padding: 4px 14px;
+    }
+    .mdl-data-table .notes-column {
+        width: 15%;
+    }
+    .mdl-data-table td.mdl-data-table__cell--non-numeric {
+        text-align: left;
+    }
+    /* END: Table Styles */
+
+
 
         /* START: Forecasting Results Style */
         .mdl-typography--text-right {
@@ -84,26 +86,29 @@
         }
         /* END: Add Promotion Button Style */
 
-        /* START: Editable Notes Styles */
-        .editable-notes {
-            min-height: 1.5em;
-            padding: 4px;
-            border: 1px solid transparent;
-            transition: border-color 0.3s;
-            max-width: 200px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .editable-notes:hover,
-        .editable-notes:focus {
-            border-color: rgba(0, 0, 0, 0.12);
-            outline: none;
-            white-space: normal;
-            overflow: visible;
-            max-width: none;
-        }
-        /* END: Editable Notes Styles */
+          /* START: Editable Notes Styles */
+    .editable-notes {
+        min-height: 1.5em;
+        padding: 4px;
+        border: 1px solid #e0e0e0;  /* Light grey border */
+        border-radius: 4px;  /* Rounded corners */
+        transition: border-color 0.3s;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        background-color: #f9f9f9;  /* Very light grey background */
+    }
+    .editable-notes:hover,
+    .editable-notes:focus {
+        border-color: #bdbdbd;  /* Darker grey border on hover/focus */
+        outline: none;
+        white-space: normal;
+        overflow: visible;
+        max-width: none;
+        background-color: #ffffff;  /* White background on hover/focus */
+    }
+    /* END: Editable Notes Styles */
 
         /* START: Price Ranking Styles */
         .price-ranking-1,
@@ -159,7 +164,17 @@
             margin-right: 10px;
         }
         /* END: Pricing Strategy Filter Buttons Styles */
-    </style>
+ 
+     /* START: Input Field Styles */
+    .mdl-textfield__input {
+        padding-right: 0.5em;  /* Added 0.5em padding to the right of all input fields */
+    }
+    /* END: Input Field Styles */
+
+  </style>
+
+ 
+
     <!-- END: Custom CSS Styles -->
 </head>
 <body>
