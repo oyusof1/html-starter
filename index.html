@@ -86,27 +86,28 @@
         }
         /* END: Add Promotion Button Style */
 
-          /* START: Editable Notes Styles */
-    .editable-notes {
+           /* START: Editable Notes Styles */
+    .mdl-data-table .editable-notes {
         min-height: 1.5em;
-        padding: 4px;
-        border: 1px solid #e0e0e0;  /* Light grey border */
-        border-radius: 4px;  /* Rounded corners */
+        padding: 4px 0.5em 4px 4px !important;  /* Added !important */
+        border: 1px solid #e0e0e0 !important;  /* Light grey border */
+        border-radius: 4px !important;  /* Rounded corners */
         transition: border-color 0.3s;
         max-width: 200px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        background-color: #f9f9f9;  /* Very light grey background */
+        background-color: #f9f9f9 !important;  /* Very light grey background */
+        display: block !important;  /* Ensure it's treated as a block element */
     }
-    .editable-notes:hover,
-    .editable-notes:focus {
-        border-color: #bdbdbd;  /* Darker grey border on hover/focus */
+    .mdl-data-table .editable-notes:hover,
+    .mdl-data-table .editable-notes:focus {
+        border-color: #bdbdbd !important;  /* Darker grey border on hover/focus */
         outline: none;
         white-space: normal;
         overflow: visible;
         max-width: none;
-        background-color: #ffffff;  /* White background on hover/focus */
+        background-color: #ffffff !important;  /* White background on hover/focus */
     }
     /* END: Editable Notes Styles */
 
@@ -165,9 +166,16 @@
         }
         /* END: Pricing Strategy Filter Buttons Styles */
  
-     /* START: Input Field Styles */
-    .mdl-textfield__input {
-        padding-right: 0.5em;  /* Added 0.5em padding to the right of all input fields */
+ /* START: Input Field Styles */
+    .mdl-textfield__input,
+    .mdl-data-table input[type="text"],
+    .mdl-data-table input[type="number"] {
+        padding-right: 0.5em !important;  /* Added !important */
+        box-sizing: border-box !important;  /* Ensure padding is included in width */
+    }
+
+   .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-dirty.is-upgraded {
+        padding-right: 1rem;
     }
     /* END: Input Field Styles */
 
