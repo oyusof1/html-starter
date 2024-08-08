@@ -262,29 +262,37 @@
                             <p>Below you will find price points ranked by their total sales dollars.<br>Select a pricing strategy to view its description and refresh the table below.</p>
                         </div>
 
-                        <!-- START: Price Strategy Filter Buttons -->
-                        <div class="mdl-card__supporting-text">
-                            <div class="price-strategy-container">
-                                <div class="price-strategy-buttons">
-                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent price-strategy-button" data-strategy="Price strategy 1">
-                                        Price strategy 1
-                                    </button>
-                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 2">
-                                        Price strategy 2
-                                    </button>
-                                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 3">
-                                        Price strategy 3
-                                    </button>
-                                </div>
-                                <div id="strategy-description-container">
-                                    <p id="default-strategy-description">This strategy focuses on competitive pricing to gain market share. It involves setting prices slightly lower than competitors to attract price-sensitive customers while maintaining profitability.</p>
-                                    <p class="price-strategy-description" data-strategy="Price strategy 1">This strategy focuses on competitive pricing to gain market share. It involves setting prices slightly lower than competitors to attract price-sensitive customers while maintaining profitability.</p>
-                                    <p class="price-strategy-description" data-strategy="Price strategy 2">This strategy emphasizes value-based pricing. It involves setting prices based on the perceived value to the customer, allowing for higher margins on premium products or services.</p>
-                                    <p class="price-strategy-description" data-strategy="Price strategy 3">This strategy utilizes dynamic pricing techniques. It involves adjusting prices in real-time based on demand, competitor actions, and other market factors to maximize revenue and profitability.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Price Strategy Filter Buttons -->
+                       <!-- START: Price Strategy Filter Buttons -->
+<div class="mdl-card__supporting-text">
+    <div class="price-strategy-container">
+        <div class="price-strategy-buttons">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent price-strategy-button" data-strategy="Price strategy 1">
+                Price strategy 1
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 2">
+                Price strategy 2
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 3">
+                Price strategy 3
+            </button>
+        </div>
+        <div id="strategy-description-container">
+            <p id="default-strategy-description">The information here would describe how this price strategy is generated. 
+</p>
+            <p class="price-strategy-description" data-strategy="Price strategy 1">
+                The information here would describe how this price strategy is generated. 
+            </p>
+            <p class="price-strategy-description" data-strategy="Price strategy 2">
+              Then the information here would describe how this price strategy is generated. 
+       </p>
+            <p class="price-strategy-description" data-strategy="Price strategy 3">
+                 This button would show information here would describe how this price strategy is generated.  
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END: Price Strategy Filter Buttons -->
+
 
                         <!-- START: White Ticket Table -->
                         <div class="mdl-card__supporting-text">
@@ -341,7 +349,7 @@
                                             <th>AUR</th>
                                             <th class="mdl-data-table__cell--non-numeric">Dates</th>
                                             <th>Units</th>
-                                            <th>Sales</th>
+                                            <th>Sales Dollars</th>
                                             <th class="mdl-data-table__cell--non-numeric">Notes</th>
                                         </tr>
                                     </thead>
@@ -361,7 +369,7 @@
                                             <th>Price</th>
                                             <th>AUR</th>
                                             <th>Units</th>
-                                            <th>Revenue</th>
+                                            <th>Sales Dollars</th>
                                             <th>Inventory</th>
                                             <th>MMU</th>
                                             <th class="mdl-data-table__cell--non-numeric">Promotion</th>
@@ -378,13 +386,13 @@
                     </div>
                     <!-- END: Promotional Calendar Section -->
 
-                    <!-- START: Combined Forecasting and This Year Projected Card -->
+                    <!-- START: Combined Forecasting and This Year Forecasted Card -->
                     <div class="mdl-card mdl-shadow--2dp content-card">
                         <div class="mdl-card__title">
                             <h2 class="mdl-card__title-text">Forecasting (Spring 2025)</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
-                            <p>This tool enables you to choose last season's event and manually forecast what a different price point may produce in the upcoming season. After calculating the forecast for the price point results, if you like the results you can populate them in the This Year Plan table below.</p>
+                            <p>This tool lets you select last season's event and forecast a new price point for the upcoming season. If you approve the forecasted results, you can add them to the This Year Plan table below.</p>
 
                             <!-- START: Forecasting Form -->
                             <form id="forecast-form" class="forecast-form">
@@ -408,8 +416,8 @@
                             <!-- START: Forecast Results -->
                             <div id="forecast-results" class="forecast-results">
                                 <br>
-                                <p>Projected Units: <span id="calculated-units"></span></p>
-                                <p>Projected Revenue: <span id="calculated-revenue"></span></p>
+                                <p>Forecasted Units: <span id="calculated-units"></span></p>
+                                <p>Forecasted Sales Dollars: <span id="calculated-revenue"></span></p>
                             </div>
                             <!-- END: Forecast Results -->
 
@@ -417,8 +425,8 @@
                                 Update Table with New Forecast
                             </button>
 
-                            <!-- START: This Year Projected Table -->
-                            <h4>This Year Projected (Spring 2025)</h4>
+                            <!-- START: This Year Forecasted Table -->
+                            <h4>This Year Forecasted (Spring 2025)</h4>
                             <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
                                 <thead>
                                     <tr>
@@ -426,7 +434,7 @@
                                         <th>Price</th>
                                         <th>AUR</th>
                                         <th>Units</th>
-                                        <th>Sales</th>
+                                        <th>Sales Dollars</th>
                                         <th>Notes</th>
                                     </tr>
                                 </thead>
@@ -434,10 +442,10 @@
                                     <!-- Promotion rows will be populated by JavaScript -->
                                 </tbody>
                             </table>
-                            <!-- END: This Year Projected Table -->
+                            <!-- END: This Year Forecasted Table -->
                         </div>
                     </div>
-                    <!-- END: Combined Forecasting and This Year Projected Card -->
+                    <!-- END: Combined Forecasting and This Year Forecasted Card -->
                 </div>
             </div>
         </main>
@@ -457,24 +465,24 @@
             const strategies = {
                 'Price strategy 1': [
                     ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Projected Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
-                    ["Projected Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
-                    ["Projected IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
-                    ["Ranking by profit", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
+                    ["Forecasted Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
+                    ["Forecasted Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
+                    ["Forecasted IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
+                    ["Ranking by Sales Dollars", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
                 ],
                 'Price strategy 2': [
                     ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Projected Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
-                    ["Projected Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
-                    ["Projected IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
-                    ["Ranking by profit", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                    ["Forecasted Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
+                    ["Forecasted Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
+                    ["Forecasted IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
+                    ["Ranking by Sales Dollars", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
                 ],
                 'Price strategy 3': [
                     ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Projected Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
-                    ["Projected Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
-                    ["Projected IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
-                    ["Ranking by profit", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+                    ["Forecasted Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
+                    ["Forecasted Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
+                    ["Forecasted IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
+                    ["Ranking by Sales Dollars", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
                 ]
             };
 
@@ -556,7 +564,7 @@
                     newRow.insertCell().textContent = row[0];
                     for (let i = 1; i < row.length; i++) {
                         const cell = newRow.insertCell();
-                        if (row[0] === "Projected Sales Dollars" || row[0] === "Cost") {
+                        if (row[0] === "Forecasted Sales Dollars" || row[0] === "Cost") {
                             // Format numbers with commas and two decimal places
                             cell.textContent = Number(row[i]).toLocaleString('en-US', {
                                 minimumFractionDigits: 2,
@@ -769,19 +777,19 @@
             // COMMENT 21: Populate weekly data function
             function populateWeeklyData() {
                 const weeklyData = [
-                    { week: 1, price: 14.99, AUR: 14.99 * 0.62, units: 577, revenue: 46155.23, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 2, price: 14.99, AUR: 14.99 * 0.62, units: 592, revenue: 47354.08, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 5, price: 14.99, AUR: 14.99 * 0.62, units: 600, revenue: 47994.0, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 8008, mmu: "45%", promotion: "Main Sale", notes: "" },
-                    { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741.5, inventory: 7158, mmu: "45%", promotion: "Main Sale", notes: "" },
-                    { week: 18, price: 14.99, AUR: 14.99 * 0.62, units: 1000, revenue: 69990.0, inventory: 6158, mmu: "40%", promotion: "Regular Price", notes: "" },
-                    { week: 22, price: 13.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988.0, inventory: 4958, mmu: "35%", promotion: "Two Day Sale", notes: "" },
-                    { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489.0, inventory: 3858, mmu: "40%", promotion: "Epic Deals", notes: "" },
-                    { week: 31, price: 13.99, AUR: 13.99 * 0.62, units: 950, revenue: 66490.5, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
-                    { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992.0, inventory: 2108, mmu: "50%", promotion: "Credit Event", notes: "" },
-                    { week: 40, price: 14.99, AUR: 14.99 * 0.62, units: 700, revenue: 55993.0, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 45, price: 14.99, AUR: 14.99 * 0.62, units: 1500, revenue: 89985.0, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
-                    { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990.0, inventory: -1092, mmu: "40%", promotion: "Credit Event", notes: "" },
+                    { week: 1, price: 14.99, AUR: 14.99 * 0.62, units: 577, revenue: 46155, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
+                    { week: 2, price: 14.99, AUR: 14.99 * 0.62, units: 592, revenue: 47354, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
+                    { week: 5, price: 14.99, AUR: 14.99 * 0.62, units: 600, revenue: 47994, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
+                    { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 8008, mmu: "45%", promotion: "Main Sale", notes: "" },
+                    { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741, inventory: 7158, mmu: "45%", promotion: "Main Sale", notes: "" },
+                    { week: 18, price: 14.99, AUR: 14.99 * 0.62, units: 1000, revenue: 69990, inventory: 6158, mmu: "40%", promotion: "Regular Price", notes: "" },
+                    { week: 22, price: 13.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988, inventory: 4958, mmu: "35%", promotion: "Two Day Sale", notes: "" },
+                    { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489, inventory: 3858, mmu: "40%", promotion: "Epic Deals", notes: "" },
+                    { week: 31, price: 13.99, AUR: 13.99 * 0.62, units: 950, revenue: 66490, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
+                    { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 2108, mmu: "50%", promotion: "Credit Event", notes: "" },
+                    { week: 40, price: 14.99, AUR: 14.99 * 0.62, units: 700, revenue: 55993, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
+                    { week: 45, price: 14.99, AUR: 14.99 * 0.62, units: 1500, revenue: 89985, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
+                    { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990, inventory: -1092, mmu: "40%", promotion: "Credit Event", notes: "" },
                 ];
 
                 const tbody = document.querySelector("#weekly-data tbody");
@@ -822,7 +830,7 @@
                                         <th>Day</th>
                                         <th>Price</th>
                                         <th>Units</th>
-                                        <th>Revenue</th>
+                                        <th>Sales Dollars</th>
                                         <th>Marketing</th>
                                         <th>Promotion</th>
                                     </tr>
@@ -880,12 +888,12 @@
                 // Sample daily data - replace with your actual data
                 const dailyData = [
                     { day: "Monday", price: 14.99, units: 100, revenue: 7999, marketing: "45% off Mystery Offer", promotion: "Regular Price" },
-                    { day: "Tuesday", price: 14.99, units: 95, revenue: 7599.05, marketing: "$5 RTKC", promotion: "Regular Price" },
-                    { day: "Wednesday", price: 14.99, units: 105, revenue: 8398.95, marketing: "$20 off $100 offer", promotion: "Regular Price" },
-                    { day: "Thursday", price: 11.99, units: 90, revenue: 6749.1, marketing: "M25% GPO (In Store Use Only)", promotion: "Credit Event" },
-                    { day: "Friday", price: 11.99, units: 110, revenue: 8248.9, marketing: "15% off Credit Event Scratch Off Barcode", promotion: "Credit Event" },
-                    { day: "Saturday", price: 14.99, units: 130, revenue: 10398.7, marketing: "25% off Mystery Offer", promotion: "Three day sale" },
-                    { day: "Sunday", price: 14.99, units: 120, revenue: 9598.8, marketing: "Kohl's Card 30% Offer", promotion: "Epic Deals" },
+                    { day: "Tuesday", price: 14.99, units: 95, revenue: 7599, marketing: "$5 RTKC", promotion: "Regular Price" },
+                    { day: "Wednesday", price: 14.99, units: 105, revenue: 8398, marketing: "$20 off $100 offer", promotion: "Regular Price" },
+                    { day: "Thursday", price: 11.99, units: 90, revenue: 6749, marketing: "M25% GPO (In Store Use Only)", promotion: "Credit Event" },
+                    { day: "Friday", price: 11.99, units: 110, revenue: 8248, marketing: "15% off Credit Event Scratch Off Barcode", promotion: "Credit Event" },
+                    { day: "Saturday", price: 14.99, units: 130, revenue: 10398, marketing: "25% off Mystery Offer", promotion: "Three day sale" },
+                    { day: "Sunday", price: 14.99, units: 120, revenue: 9598, marketing: "Kohl's Card 30% Offer", promotion: "Epic Deals" },
                 ];
 
                 dailyData.forEach((day) => {
