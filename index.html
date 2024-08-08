@@ -32,41 +32,7 @@
         }
         /* END: Layout Styles */
 
-         /* START: Compact Table Styles */
-.compact-table {
-    table-layout: fixed;
-    width: 100%;
-}
-
-.compact-table th,
-.compact-table td {
-    padding: 8px 4px;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.compact-table .mdl-data-table__cell--non-numeric {
-    width: 20%;
-}
-
-.compact-table td:nth-child(2),
-.compact-table td:nth-child(3) {
-    width: 10%;
-}
-
-.compact-table td:nth-child(4),
-.compact-table td:nth-child(5) {
-    width: 15%;
-}
-
-.compact-table .notes-column {
-    width: 30%;
-}
-/* END: Compact Table Styles */
-
-  /* START: Table Styles */
+           /* START: Table Styles */
     .mdl-data-table {
         width: 100%;
         white-space: normal;
@@ -143,18 +109,6 @@
         max-width: none;
         background-color: #ffffff !important;  /* White background on hover/focus */
     }
-
-.compact-table .notes-column .editable-notes:hover,
-.compact-table .notes-column .editable-notes:focus {
-    position: absolute;
-    background: white;
-    z-index: 1;
-    width: auto;
-    max-width: 300px;
-    white-space: normal;
-    overflow: visible;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
     /* END: Editable Notes Styles */
 
         /* START: Price Ranking Styles */
@@ -389,7 +343,8 @@
                         <!-- START: Yearly View -->
                         <div id="yearly-view">
                             <h4>Last Year (Spring 2024)</h4>
-                         <table class="mdl-data-table mdl-js-data-table compact-table" id="promotions-data-2024">                                <thead>
+                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data-2024">
+                                <thead>
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric">Promotion</th>
                                         <th>Price</th>
@@ -473,10 +428,9 @@
                         </button>
 
                         <!-- START: This Year Projected Table -->
-                       <div style="width: 90%; margin: auto;">
-    <h4>This Year Projected (Spring 2025)</h4>
-    <table class="mdl-data-table mdl-js-data-table compact-table" id="promotions-data">
-                               <thead>
+                        <h4>This Year Projected (Spring 2025)</h4>
+                        <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
+                            <thead>
                                 <tr>
                                     <th class="mdl-data-table__cell--non-numeric">Promotion</th>
                                     <th>Price</th>
@@ -680,10 +634,9 @@ function formatNumber(number, decimals = 0) {
             if (updateTableButton) updateTableButton.addEventListener("click", updateTablesAndClear);
             if (viewToggle) viewToggle.addEventListener("change", toggleView);
 
-           // COMMENT 12: Initialize
-populatePromotionDropdown();
-populatePromotionsTable();
-populateLastYearPromotions();
+            // COMMENT 12: Initialize
+            populatePromotionDropdown();
+            populatePromotionsTable();
 
             // COMMENT 13: Handle forecast submit function
             function handleForecastSubmit(e) {
@@ -1036,7 +989,7 @@ populateLastYearPromotions();
             // COMMENT 33: Populate Last Year's promotion data
            function populateLastYearPromotions() {
     console.log("Populating Last Year's promotion data");
-  const tbody = document.querySelector("#promotions-data-2024 tbody");
+    const tbody = document.querySelector("#promotions-data-2024 tbody");
     if (!tbody) {
         console.error("Table body for last year's promotions not found");
         return;
