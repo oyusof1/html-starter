@@ -156,17 +156,10 @@
             background-color: #f2f2f2;
         }
         /* END: Daily Table Styles */
-
-        /* START: Pricing Strategy Filter Buttons Styles */
-        .price-strategy-filters {
-            margin-bottom: 20px;
-        }
-        .price-strategy-filters button {
-            margin-right: 10px;
-        }
-        /* END: Pricing Strategy Filter Buttons Styles */
  
  /* START: Input Field Styles */
+
+
     .mdl-textfield__input,
     .mdl-data-table input[type="text"],
     .mdl-data-table input[type="number"] {
@@ -179,6 +172,41 @@
     }
     /* END: Input Field Styles */
 
+
+    /* START: Pricing Strategy Filter Buttons Styles */
+        .price-strategy-filters {
+            margin-bottom: 20px;
+        }
+        .price-strategy-filters button {
+            margin-right: 10px;
+        }
+       
+    .price-strategy-container {
+        margin-bottom: 20px;
+    }
+    .price-strategy-buttons {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 15px;
+    }
+    .price-strategy-button {
+        margin-right: 10px;
+    }
+    .price-strategy-description {
+        display: none;
+        padding: 10px;
+        background-color: none;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .price-strategy-description.active {
+        display: block;
+    }
+    #strategy-description-container {
+        min-height: 2rempx; /* Adjust as needed */
+    }
+     /* END: Pricing Strategy Filter Buttons Styles */
   </style>
 
  
@@ -234,25 +262,39 @@
                         <h2 class="mdl-card__title-text">White Ticket</h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                        <p>Below you will find price points ranked by their total sales dollars.</p>
+                        <p>Below you will find price points ranked by their total sales dollars.<br>Select a pricing strategy to view its description and update the table below.</p>
                     </div>
 
-                    <!-- START: Price Strategy Filter Buttons -->
-                    <div class="mdl-card__supporting-text">
-                        <div class="price-strategy-filters">
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" data-strategy="Price strategy 1">
-        Price strategy 1
-    </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-strategy="Price strategy 2">
-        Price strategy 2
-    </button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" data-strategy="Price strategy 3">
-        Price strategy 3
-    </button>
-                           <p><br>Choosing a price strategy will change the table below</p>
-                        </div>
-                    </div>
-                    <!-- END: Price Strategy Filter Buttons -->
+                  <!-- START: Price Strategy Filter Buttons -->
+<div class="mdl-card__supporting-text">
+    <div class="price-strategy-container">
+        <div class="price-strategy-buttons">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent price-strategy-button" data-strategy="Price strategy 1">
+                Price strategy 1
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 2">
+                Price strategy 2
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 3">
+                Price strategy 3
+            </button>
+        </div>
+        <div id="strategy-description-container">
+            <p id="default-strategy-description">This strategy focuses on competitive pricing to gain market share. It involves setting prices slightly lower than competitors to attract price-sensitive customers while maintaining profitability.
+</p>
+            <p class="price-strategy-description" data-strategy="Price strategy 1">
+                This strategy focuses on competitive pricing to gain market share. It involves setting prices slightly lower than competitors to attract price-sensitive customers while maintaining profitability.
+            </p>
+            <p class="price-strategy-description" data-strategy="Price strategy 2">
+                This strategy emphasizes value-based pricing. It involves setting prices based on the perceived value to the customer, allowing for higher margins on premium products or services.
+            </p>
+            <p class="price-strategy-description" data-strategy="Price strategy 3">
+                This strategy utilizes dynamic pricing techniques. It involves adjusting prices in real-time based on demand, competitor actions, and other market factors to maximize revenue and profitability.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END: Price Strategy Filter Buttons -->
 
                     <!-- START: White Ticket Table -->
                     <div class="mdl-card__supporting-text">
@@ -415,78 +457,75 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!-- END: External JavaScript Libraries -->
 
-    <!-- START: Custom JavaScript -->
-    <script>
-        // COMMENT 1: Start of DOMContentLoaded event listener
-        document.addEventListener("DOMContentLoaded", function () {
-            console.log("DOM fully loaded and parsed");
+   <script>
+// COMMENT 1: Start of DOMContentLoaded event listener
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed");
 
-          // COMMENT 2: Define strategies object (make sure this is correctly defined with all your data)
-const strategies = {
-    'Price strategy 1': [
-        ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-        ["Projected Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
-        ["Projected Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
-        ["Projected IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
-        ["Ranking by profit", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
-    ],
-    'Price strategy 2': [
-        ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-        ["Projected Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
-        ["Projected Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
-        ["Projected IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
-        ["Ranking by profit", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-    ],
-    'Price strategy 3': [
-        ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-        ["Projected Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
-        ["Projected Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
-        ["Projected IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
-        ["Ranking by profit", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    ]
-};
+    // COMMENT 2: Define strategies object
+    const strategies = {
+        'Price strategy 1': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Projected Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
+            ["Projected Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
+            ["Projected IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
+            ["Ranking by profit", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
+        ],
+        'Price strategy 2': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Projected Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
+            ["Projected Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
+            ["Projected IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
+            ["Ranking by profit", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        ],
+        'Price strategy 3': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Projected Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
+            ["Projected Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
+            ["Projected IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
+            ["Ranking by profit", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        ]
+    };
 
-// COMMENT 3: Select strategy buttons and add event listeners
-const strategyButtons = document.querySelectorAll('.price-strategy-filters button');
+    // COMMENT 3: Select strategy buttons and add event listeners
+const strategyButtons = document.querySelectorAll('.price-strategy-button');
+const strategyDescriptions = document.querySelectorAll('.price-strategy-description');
+const defaultDescription = document.getElementById('default-strategy-description');
 console.log("Found strategy buttons:", strategyButtons.length);
 
 strategyButtons.forEach(button => {
     console.log("Adding click listener to button:", button.textContent.trim(), "with data-strategy:", button.dataset.strategy);
-    button.addEventListener('click', changeStrategy);
+    button.addEventListener('click', function() {
+        const strategy = this.getAttribute('data-strategy');
+        
+        // Hide default description and all strategy descriptions
+        defaultDescription.style.display = 'none';
+        strategyDescriptions.forEach(desc => {
+            desc.classList.remove('active');
+        });
+        
+        // Show the description for the clicked strategy
+        const description = document.querySelector(`.price-strategy-description[data-strategy="${strategy}"]`);
+        if (description) {
+            description.classList.add('active');
+        }
+
+        // Update button styles
+        strategyButtons.forEach(btn => btn.classList.remove('mdl-button--accent'));
+        this.classList.add('mdl-button--accent');
+
+        // Call your existing changeStrategy function here
+        changeStrategy(strategy);
+    });
 });
 
-// COMMENT 4: Strategy change function
-function changeStrategy(e) {
-    // Find the button element
-    let buttonElement = e.target;
-    while (buttonElement && !buttonElement.classList.contains('mdl-button')) {
-        buttonElement = buttonElement.parentElement;
+    // COMMENT 4: Strategy change function
+    function changeStrategy(strategy) {
+        console.log("Strategy changed to:", strategy);
+        updateWhiteTicketTable(strategy);
     }
 
-    if (!buttonElement) {
-        console.error("Button element not found");
-        return;
-    }
-
-    console.log("Button clicked:", buttonElement);
-    console.log("Button dataset:", buttonElement.dataset);
-    console.log("Button text content:", buttonElement.textContent.trim());
-
-    let strategy = buttonElement.dataset.strategy;
-    if (!strategy) {
-        strategy = buttonElement.textContent.trim();
-        console.warn("Strategy not found in dataset, using button text:", strategy);
-    }
-
-    console.log("Identified strategy:", strategy);
-    updateWhiteTicketTable(strategy);
-    
-    // Update button styles
-    strategyButtons.forEach(btn => btn.classList.remove('mdl-button--accent'));
-    buttonElement.classList.add('mdl-button--accent');
-}
-
-// COMMENT 5: Update White Ticket table function
+    // COMMENT 5: Update White Ticket table function
 function updateWhiteTicketTable(strategy) {
     console.log("Updating table with strategy:", strategy);
     const table = document.getElementById('white-ticket-table');
@@ -526,7 +565,18 @@ function updateWhiteTicketTable(strategy) {
         newRow.insertCell().textContent = row[0];
         for (let i = 1; i < row.length; i++) {
             const cell = newRow.insertCell();
-            cell.textContent = typeof row[i] === 'number' ? row[i].toLocaleString() : row[i];
+            if (row[0] === "Projected Sales Dollars" || row[0] === "Cost") {
+                // Format numbers with commas and two decimal places
+                cell.textContent = Number(row[i]).toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            } else if (typeof row[i] === 'number') {
+                // Format other numbers with commas but no decimal places
+                cell.textContent = Number(row[i]).toLocaleString('en-US');
+            } else {
+                cell.textContent = row[i];
+            }
             if (row[0] === "Ranking by profit") {
                 cell.classList.add(`price-ranking-${row[i]}`);
             }
@@ -537,41 +587,19 @@ function updateWhiteTicketTable(strategy) {
     console.log("Final table rows:", tbody.rows.length);
     console.log("Table updated with strategy:", normalizedStrategy);
 }
+    // COMMENT 6: Initialize with default strategy
+    console.log("Initializing with default strategy");
+    updateWhiteTicketTable('Price strategy 1');
+
+// Helper function for number formatting
+function formatNumber(number, decimals = 0) {
+    return Number(number).toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    });
+}
 
 // COMMENT 6: Initialize with default strategy
-console.log("Initializing with default strategy");
-updateWhiteTicketTable('Price strategy 1');
-            // COMMENT 7: Start of White Ticket Section
-            let ascending = true;
-            const sortButton = document.getElementById("sortButton");
-            if (sortButton) {
-                sortButton.addEventListener("click", sortColumns);
-            }
-
-            // COMMENT 8: Sort columns function
-            function sortColumns() {
-                const table = document.getElementById("white-ticket-table");
-                const rows = Array.from(table.rows);
-                const priceRankingRow = rows[rows.length - 1];
-                const headerRow = rows[0];
-                const columns = Array.from(priceRankingRow.cells).slice(1);
-
-                columns.sort((a, b) => {
-                    const rankA = parseInt(a.textContent);
-                    const rankB = parseInt(b.textContent);
-                    return ascending ? rankA - rankB : rankB - rankA;
-                });
-
-                for (let i = 0; i < columns.length; i++) {
-                    const columnIndex = columns[i].cellIndex;
-                    for (let j = 0; j < rows.length; j++) {
-                        const cell = rows[j].cells[columnIndex];
-                        rows[j].appendChild(cell);
-                    }
-                }
-
-                ascending = !ascending;
-            }
 
             // COMMENT 9: Select DOM elements
             const form = document.getElementById("forecast-form");
@@ -897,11 +925,11 @@ function populateLastYearPromotions() {
         const row = tbody.insertRow();
         row.innerHTML = `
             <td class="mdl-data-table__cell--non-numeric">${promo.promotion}</td>
-            <td>$${promo.price.toFixed(2)}</td>
-            <td>$${promo.AUR.toFixed(2)}</td>
+            <td>$${formatNumber(promo.price, 2)}</td>
+            <td>$${formatNumber(promo.AUR, 2)}</td>
             <td class="mdl-data-table__cell--non-numeric">${promo.dates}</td>
-            <td>${promo.units.toLocaleString()}</td>
-            <td>$${promo.sales.toFixed(2)}</td>
+            <td>${formatNumber(promo.units)}</td>
+            <td>$${formatNumber(promo.sales, 2)}</td>
             <td class="mdl-data-table__cell--non-numeric notes-column">
                 <div contenteditable="true" class="editable-notes" data-table="lastYear" data-row="${index}">${promo.notes}</div>
             </td>
@@ -909,7 +937,6 @@ function populateLastYearPromotions() {
     });
     console.log("Last Year's promotion data populated");
 }
-
 // COMMENT 36: Call the function to populate Last Year's promotion data
 // Add this line in the DOMContentLoaded event listener, after populatePromotionsTable();
 populateLastYearPromotions();
