@@ -1,15 +1,17 @@
-import { next } from '@vercel/edge';
+import { NextResponse } from 'next/server';
 
-export default function middleware(req) {
-  return next({
-    headers: {
-      'Referrer-Policy': 'origin-when-cross-origin',
-      'X-Frame-Options': 'ALLOW-FROM *', // Changed from 'DENY' to allow iframes
-      'X-Content-Type-Options': 'nosniff',
-      'X-DNS-Prefetch-Control': 'on',
-      'Strict-Transport-Security':
-        'max-age=31536000; includeSubDomains; preload',
-      'Content-Security-Policy': "frame-ancestors 'self' *;", // Added to allow iframe embedding
-    },
-  });
+export function middleware(request) {
+  const response = NextResponse.next();
+
+  response.headers.delete('X-Frame-Options');
+  response.headers.set(
+    'Content-Security-Policy',
+    "frame-ancestors 'self' *;"
+  );
+
+  return response;
 }
+
+export const config = {
+  matcher: '/:path*',
+};
