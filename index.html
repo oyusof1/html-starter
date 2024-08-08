@@ -169,6 +169,15 @@
         }
         /* END: Input Field Styles */
 
+/* Sort Button Styles */
+#white-ticket-table .mdl-button--icon {
+    margin-right: 8px;
+}
+#white-ticket-table th:first-child,
+#white-ticket-table td:first-child {
+    white-space: nowrap;
+}
+
         /* START: Pricing Strategy Filter Buttons Styles */
         .price-strategy-filters {
             margin-bottom: 20px;
@@ -294,31 +303,31 @@
 <!-- END: Price Strategy Filter Buttons -->
 
 
-                        <!-- START: White Ticket Table -->
-                        <div class="mdl-card__supporting-text">
-                            <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
-                                <thead>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric">White Ticket</th>
-                                        <th>$9.99</th>
-                                        <th>$10.99</th>
-                                        <th>$11.99</th>
-                                        <th>$12.99</th>
-                                        <th>$13.99</th>
-                                        <th>$14.99</th>
-                                        <th>$15.99</th>
-                                        <th>$16.99</th>
-                                        <th>$17.99</th>
-                                        <th>$18.99</th>
-                                        <th>$19.99</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Table body will be populated by JavaScript -->
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- END: White Ticket Table -->
+                      <!-- START: White Ticket Table -->
+<div class="mdl-card__supporting-text">
+    <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
+        <thead>
+            <tr>
+                <th class="mdl-data-table__cell--non-numeric">White Ticket</th>
+                <th>$9.99</th>
+                <th>$10.99</th>
+                <th>$11.99</th>
+                <th>$12.99</th>
+                <th>$13.99</th>
+                <th>$14.99</th>
+                <th>$15.99</th>
+                <th>$16.99</th>
+                <th>$17.99</th>
+                <th>$18.99</th>
+                <th>$19.99</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body will be populated by JavaScript -->
+        </tbody>
+    </table>
+</div>
+<!-- END: White Ticket Table -->
                     </div>
                     <!-- END: White Ticket Section -->
 
@@ -457,594 +466,682 @@
     <!-- END: External JavaScript Libraries -->
 
     <script>
-        // COMMENT 1: Start of DOMContentLoaded event listener
-        document.addEventListener("DOMContentLoaded", function () {
-            console.log("DOM fully loaded and parsed");
+    // COMMENT 1: Start of DOMContentLoaded event listener
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed");
 
-            // COMMENT 2: Define strategies object
-            const strategies = {
-                'Price strategy 1': [
-                    ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Forecasted Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
-                    ["Forecasted Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
-                    ["Forecasted IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
-                    ["Ranking by Sales Dollars", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
-                ],
-                'Price strategy 2': [
-                    ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Forecasted Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
-                    ["Forecasted Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
-                    ["Forecasted IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
-                    ["Ranking by Sales Dollars", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-                ],
-                'Price strategy 3': [
-                    ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
-                    ["Forecasted Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
-                    ["Forecasted Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
-                    ["Forecasted IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
-                    ["Ranking by Sales Dollars", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
-                ]
-            };
+    // COMMENT 2: Define strategies object
+    const strategies = {
+        'Price strategy 1': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Forecasted Units", 3824, 3258, 2782, 2382, 2045, 1762, 1524, 1325, 1159, 1020, 904],
+            ["Forecasted Sales Dollars", 38192, 35805, 33335, 30932, 28609, 26402, 24368, 22501, 20849, 19369, 18080],
+            ["Forecasted IMU", "42%", "47%", "52%", "55%", "58%", "61%", "64%", "66%", "68%", "69%", "71%"],
+            ["Ranking by Sales Dollars", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
+        ],
+        'Price strategy 2': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Forecasted Units", 4200, 3580, 3060, 2620, 2250, 1940, 1680, 1460, 1280, 1120, 990],
+            ["Forecasted Sales Dollars", 41958, 39344, 36689, 34033, 31447, 29080, 26843, 24785, 23027, 21437, 19790],
+            ["Forecasted IMU", "40%", "45%", "50%", "53%", "56%", "59%", "62%", "64%", "66%", "67%", "69%"],
+            ["Ranking by Sales Dollars", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        ],
+        'Price strategy 3': [
+            ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
+            ["Forecasted Units", 3450, 2940, 2510, 2150, 1840, 1590, 1370, 1190, 1040, 920, 810],
+            ["Forecasted Sales Dollars", 34465, 32290, 30094, 27928, 25741, 23834, 21885, 20207, 18709, 17460, 16191],
+            ["Forecasted IMU", "44%", "49%", "54%", "57%", "60%", "63%", "66%", "68%", "70%", "71%", "73%"],
+            ["Ranking by Sales Dollars", 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        ]
+    };
 
-            // COMMENT 3: Select strategy buttons and add event listeners
-            const strategyButtons = document.querySelectorAll('.price-strategy-button');
-            const strategyDescriptions = document.querySelectorAll('.price-strategy-description');
-            const defaultDescription = document.getElementById('default-strategy-description');
-            console.log("Found strategy buttons:", strategyButtons.length);
+    let currentStrategy = 'Price strategy 1';
 
-            strategyButtons.forEach(button => {
-                console.log("Adding click listener to button:", button.textContent.trim(), "with data-strategy:", button.dataset.strategy);
-                button.addEventListener('click', function() {
-                    const strategy = this.getAttribute('data-strategy');
-                    
-                    // Hide default description and all strategy descriptions
-                    defaultDescription.style.display = 'none';
-                    strategyDescriptions.forEach(desc => {
-                        desc.classList.remove('active');
-                    });
-                    
-                    // Show the description for the clicked strategy
-                    const description = document.querySelector(`.price-strategy-description[data-strategy="${strategy}"]`);
-                    if (description) {
-                        description.classList.add('active');
-                    }
+    // COMMENT 3: Select strategy buttons and add event listeners
+    const strategyButtons = document.querySelectorAll('.price-strategy-button');
+    const strategyDescriptions = document.querySelectorAll('.price-strategy-description');
+    const defaultDescription = document.getElementById('default-strategy-description');
+    console.log("Found strategy buttons:", strategyButtons.length);
 
-                    // Update button styles
-                    strategyButtons.forEach(btn => btn.classList.remove('mdl-button--accent'));
-                    this.classList.add('mdl-button--accent');
-
-                    // Call your existing changeStrategy function here
-                    changeStrategy(strategy);
-                });
+    strategyButtons.forEach(button => {
+        console.log("Adding click listener to button:", button.textContent.trim(), "with data-strategy:", button.dataset.strategy);
+        button.addEventListener('click', function() {
+            const strategy = this.getAttribute('data-strategy');
+            
+            // Hide default description and all strategy descriptions
+            defaultDescription.style.display = 'none';
+            strategyDescriptions.forEach(desc => {
+                desc.classList.remove('active');
             });
-
-            // COMMENT 4: Strategy change function
-            function changeStrategy(strategy) {
-                console.log("Strategy changed to:", strategy);
-                updateWhiteTicketTable(strategy);
+            
+            // Show the description for the clicked strategy
+            const description = document.querySelector(`.price-strategy-description[data-strategy="${strategy}"]`);
+            if (description) {
+                description.classList.add('active');
             }
 
-            // COMMENT 5: Update White Ticket table function
-            function updateWhiteTicketTable(strategy) {
-                console.log("Updating table with strategy:", strategy);
-                const table = document.getElementById('white-ticket-table');
-                if (!table) {
-                    console.error("Table not found!");
-                    return;
-                }
-                const tbody = table.querySelector('tbody');
-                if (!tbody) {
-                    console.error("Table body not found!");
-                    return;
-                }
-                
-                console.log("Current table rows:", tbody.rows.length);
+            // Update button styles
+            strategyButtons.forEach(btn => btn.classList.remove('mdl-button--accent'));
+            this.classList.add('mdl-button--accent');
 
-                // Clear existing rows
-                tbody.innerHTML = '';
-                
-                console.log("Rows after clearing:", tbody.rows.length);
+            // Call the changeStrategy function here
+            changeStrategy(strategy);
+        });
+    });
 
-                // Normalize strategy name to match object keys
-                const normalizedStrategy = Object.keys(strategies).find(key => 
-                    key.toLowerCase() === strategy.toLowerCase()
-                );
+    // COMMENT 4: Strategy change function
+    function changeStrategy(strategy) {
+        console.log("Strategy changed to:", strategy);
+        currentStrategy = strategy;
+        updateWhiteTicketTable(strategy);
+    }
 
-                if (!normalizedStrategy || !strategies[normalizedStrategy]) {
-                    console.error("Strategy not found:", strategy);
-                    console.log("Available strategies:", Object.keys(strategies));
-                    return;
-                }
+    // COMMENT 5: Update White Ticket table function
+    function updateWhiteTicketTable(strategy) {
+        console.log("Updating table with strategy:", strategy);
+        const table = document.getElementById('white-ticket-table');
+        if (!table) {
+            console.error("Table not found!");
+            return;
+        }
+        const tbody = table.querySelector('tbody');
+        const thead = table.querySelector('thead');
+        if (!tbody || !thead) {
+            console.error("Table body or head not found!");
+            return;
+        }
+        
+        console.log("Current table rows:", tbody.rows.length);
 
-                console.log("Strategy data found:", strategies[normalizedStrategy]);
+        // Clear existing rows
+        tbody.innerHTML = '';
+        
+        console.log("Rows after clearing:", tbody.rows.length);
 
-                // Populate the table with the selected strategy's data
-                strategies[normalizedStrategy].forEach((row, index) => {
-                    const newRow = tbody.insertRow();
-                    newRow.insertCell().textContent = row[0];
-                    for (let i = 1; i < row.length; i++) {
-                        const cell = newRow.insertCell();
-                        if (row[0] === "Forecasted Sales Dollars" || row[0] === "Cost") {
-                            // Format numbers with commas and two decimal places
-                            cell.textContent = Number(row[i]).toLocaleString('en-US', {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2
-                            });
-                        } else if (typeof row[i] === 'number') {
-                            // Format other numbers with commas but no decimal places
-                            cell.textContent = Number(row[i]).toLocaleString('en-US');
-                        } else {
-                            cell.textContent = row[i];
-                        }
-                        if (row[0] === "Ranking by profit") {
-                            cell.classList.add(`price-ranking-${row[i]}`);
-                        }
-                    }
-                    console.log(`Row ${index} inserted:`, row[0]);
-                });
+        // Normalize strategy name to match object keys
+        const normalizedStrategy = Object.keys(strategies).find(key => 
+            key.toLowerCase() === strategy.toLowerCase()
+        );
 
-                console.log("Final table rows:", tbody.rows.length);
-                console.log("Table updated with strategy:", normalizedStrategy);
+        if (!normalizedStrategy || !strategies[normalizedStrategy]) {
+            console.error("Strategy not found:", strategy);
+            console.log("Available strategies:", Object.keys(strategies));
+            return;
+        }
+
+        console.log("Strategy data found:", strategies[normalizedStrategy]);
+
+        // Update table header
+        const headerRow = thead.rows[0];
+        headerRow.innerHTML = '<th class="mdl-data-table__cell--non-numeric">White Ticket</th>';
+        strategies[normalizedStrategy][0].forEach((price, index) => {
+            if (index > 0) {
+                headerRow.innerHTML += `<th>$${price.toFixed(2)}</th>`;
             }
+        });
 
-            // COMMENT 6: Initialize with default strategy
-            console.log("Initializing with default strategy");
-            updateWhiteTicketTable('Price strategy 1');
-
-            // Helper function for number formatting
-            function formatNumber(number, decimals = 0) {
-                return Number(number).toLocaleString('en-US', {
-                    minimumFractionDigits: decimals,
-                    maximumFractionDigits: decimals
-                });
-            }
-
-            // COMMENT 7: Initialize with default strategy
-
-            // COMMENT 8: Select DOM elements
-            const form = document.getElementById("forecast-form");
-            const updateTableButton = document.getElementById("update-table");
-            const promotionSelect = document.getElementById("promotion-select");
-            const promotionsTable = document.getElementById("promotions-data");
-            const priceInput = document.getElementById("price");
-            const calculatedUnitsElement = document.getElementById("calculated-units");
-            const calculatedRevenueElement = document.getElementById("calculated-revenue");
-            const viewToggle = document.getElementById("view-toggle");
-            const yearlyView = document.getElementById("yearly-view");
-            const weeklyView = document.getElementById("weekly-view");
-            const seasonSelect = document.getElementById('season-select');
-            const selectStyleTitle = document.getElementById('select-style-title');
-            const selectStyleField = document.getElementById('select-style-field');
-            const productSearch = document.getElementById('product-search');
-            const pageContentBelowCard = document.getElementById('page-content-below-card');
-
-            // COMMENT 9: State variables
-            let calculatedUnits, calculatedRevenue;
-            let currentProduct = { price: 19.99 };
-
-            // COMMENT 10: Sample promotions data
-            const promotions = [
-                { name: "Regular Price", currentPrice: 19.99, discount: 0 },
-                { name: "LPS", currentPrice: 12.99, discount: 0 },
-                { name: "Two Day Sale", currentPrice: 14.99, discount: 0 },
-                { name: "EPIC deals", currentPrice: 10.99, discount: 0 },
-                { name: "Credit Event", currentPrice: 15.99, discount: 0 },
-                { name: "Main Sale", currentPrice: 14.99, discount: 0 },
-                { name: "Black Friday", currentPrice: 10.99, discount: 0 },
-            ];
-
-            // COMMENT 11: Event Listeners
-            if (form) form.addEventListener("submit", handleForecastSubmit);
-            if (updateTableButton) updateTableButton.addEventListener("click", updateTablesAndClear);
-            if (viewToggle) viewToggle.addEventListener("change", toggleView);
-            if (seasonSelect) seasonSelect.addEventListener('change', handleSeasonSelect);
-            if (productSearch) productSearch.addEventListener("input", handleProductSearch);
-
-            // COMMENT 12: Initialize
-            populatePromotionDropdown();
-            populatePromotionsTable();
-
-            // COMMENT 13: Handle forecast submit function
-            function handleForecastSubmit(e) {
-                e.preventDefault();
-                const price = parseFloat(priceInput.value);
-
-                calculatedUnits = Math.round(100000 / price);
-                calculatedRevenue = price * calculatedUnits;
-
-                calculatedUnitsElement.textContent = calculatedUnits.toLocaleString();
-                calculatedRevenueElement.textContent = "$" + calculatedRevenue.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                });
-
-                updateTableButton.disabled = false;
-            }
-
-            // COMMENT 14: Update promotion data function
-            function updatePromotionData(index, newPrice) {
-                promotions[index].currentPrice = newPrice;
-            }
-
-            // COMMENT 15: Update tables and clear function
-            function updateTablesAndClear() {
-                const price = parseFloat(priceInput.value);
-                const selectedPromoIndex = parseInt(promotionSelect.value);
-
-                if (selectedPromoIndex < promotions.length) {
-                    promotions[selectedPromoIndex].currentPrice = price;
-                    promotions[selectedPromoIndex].units = calculatedUnits;
-                    promotions[selectedPromoIndex].sales = calculatedRevenue;
-                    promotions[selectedPromoIndex].AUR = calculateAUR(price);
-                }
-
-                populatePromotionsTable();
-                populatePromotionDropdown();
-
-                calculatedUnits = null;
-                calculatedRevenue = null;
-                calculatedUnitsElement.textContent = "";
-                calculatedRevenueElement.textContent = "";
-                priceInput.value = "";
-
-                updateTableButton.disabled = true;
-                priceInput.parentElement.classList.remove("is-dirty");
-            }
-
-            // COMMENT 16: Add price event listeners function
-            function addPriceEventListeners() {
-                console.log("Adding price event listeners");
-                const tbody = promotionsTable.querySelector("tbody");
-                tbody.addEventListener("input", function (e) {
-                    if (e.target && e.target.cellIndex === 1) {
-                        console.log("Price cell edited");
-                        const row = e.target.parentElement;
-                        const priceCell = e.target;
-                        const aurCell = row.cells[2];
-                        const price = parseFloat(priceCell.textContent.replace("$", ""));
-                        if (!isNaN(price)) {
-                            const AUR = calculateAUR(price);
-                            aurCell.textContent = "$" + AUR.toFixed(2);
-                        }
-                    }
-                });
-            }
-
-            // COMMENT 17: Populate promotion dropdown function
-            function populatePromotionDropdown() {
-                promotionSelect.innerHTML = "";
-                promotions.forEach((promo, index) => {
-                    const option = document.createElement("option");
-                    option.value = index;
-                    const price = promo.currentPrice || (currentProduct ? currentProduct.price * (1 - promo.discount) : 0);
-                    let dateRange = "";
-                    if (promo.startDate && promo.endDate) {
-                        dateRange = ` (${promo.startDate} to ${promo.endDate})`;
-                    }
-                    option.textContent = `${promo.name}${dateRange} (Current: $${price.toFixed(2)})`;
-                    promotionSelect.appendChild(option);
-                });
-            }
-
-            // COMMENT 18: Populate promotions table function
-            function populatePromotionsTable() {
-                console.log("Populating promotions table");
-                try {
-                    const tbody = promotionsTable.querySelector("tbody");
-                    tbody.innerHTML = "";
-
-                    promotions.forEach((promo, index) => {
-                        const row = tbody.insertRow();
-                        const price = promo.currentPrice || (currentProduct ? currentProduct.price * (1 - promo.discount) : 0);
-                        const AUR = calculateAUR(price);
-                        const units = promo.units || 30000;
-                        const sales = promo.sales || price * units;
-                        row.innerHTML = `
-                            <td class="mdl-data-table__cell--non-numeric">${promo.name}</td>
-                            <td>$${price.toFixed(2)}</td>
-                            <td>$${AUR.toFixed(2)}</td>
-                            <td>${units.toLocaleString()}</td>
-                            <td>$${Math.round(sales).toLocaleString()}</td>
-                            <td class="mdl-data-table__cell--non-numeric notes-column">
-                                <div contenteditable="true" class="editable-notes" data-table="promotions" data-row="${index}">${promo.notes || ""}</div>
-                            </td>
-                        `;
+        // Populate the table with the selected strategy's data
+        strategies[normalizedStrategy].forEach((row, index) => {
+            const newRow = tbody.insertRow();
+            const headerCell = newRow.insertCell();
+            headerCell.className = 'mdl-data-table__cell--non-numeric';
+            headerCell.innerHTML = `<button class="mdl-button mdl-js-button mdl-button--icon" onclick="sortWhiteTicketTable(${index})">
+                                        <i class="material-icons">sort</i>
+                                    </button> ${row[0]}`;
+            
+            for (let i = 1; i < row.length; i++) {
+                const cell = newRow.insertCell();
+                if (row[0] === "Forecasted Sales Dollars" || row[0] === "Cost") {
+                    // Format numbers with commas and two decimal places
+                    cell.textContent = Number(row[i]).toLocaleString('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
                     });
-
-                    addPriceEventListeners();
-                } catch (error) {
-                    console.error("Error in populatePromotionsTable:", error);
-                }
-            }
-
-            // COMMENT 19: Calculate AUR function
-            function calculateAUR(price) {
-                return price * 0.62;
-            }
-
-            // COMMENT 20: Toggle view function
-            function toggleView() {
-                if (viewToggle.checked) {
-                    yearlyView.style.display = "none";
-                    weeklyView.style.display = "block";
-                    populateWeeklyData();
+                } else if (typeof row[i] === 'number') {
+                    // Format other numbers with commas but no decimal places
+                    cell.textContent = Number(row[i]).toLocaleString('en-US');
                 } else {
-                    yearlyView.style.display = "block";
-                    weeklyView.style.display = "none";
+                    cell.textContent = row[i];
+                }
+                if (row[0] === "Ranking by Sales Dollars") {
+                    cell.classList.add(`price-ranking-${row[i]}`);
                 }
             }
+            console.log(`Row ${index} inserted:`, row[0]);
+        });
 
-            // COMMENT 21: Populate weekly data function
-            function populateWeeklyData() {
-                const weeklyData = [
-                    { week: 1, price: 14.99, AUR: 14.99 * 0.62, units: 577, revenue: 46155, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 2, price: 14.99, AUR: 14.99 * 0.62, units: 592, revenue: 47354, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 5, price: 14.99, AUR: 14.99 * 0.62, units: 600, revenue: 47994, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 8008, mmu: "45%", promotion: "Main Sale", notes: "" },
-                    { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741, inventory: 7158, mmu: "45%", promotion: "Main Sale", notes: "" },
-                    { week: 18, price: 14.99, AUR: 14.99 * 0.62, units: 1000, revenue: 69990, inventory: 6158, mmu: "40%", promotion: "Regular Price", notes: "" },
-                    { week: 22, price: 13.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988, inventory: 4958, mmu: "35%", promotion: "Two Day Sale", notes: "" },
-                    { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489, inventory: 3858, mmu: "40%", promotion: "Epic Deals", notes: "" },
-                    { week: 31, price: 13.99, AUR: 13.99 * 0.62, units: 950, revenue: 66490, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
-                    { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 2108, mmu: "50%", promotion: "Credit Event", notes: "" },
-                    { week: 40, price: 14.99, AUR: 14.99 * 0.62, units: 700, revenue: 55993, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
-                    { week: 45, price: 14.99, AUR: 14.99 * 0.62, units: 1500, revenue: 89985, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
-                    { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990, inventory: -1092, mmu: "40%", promotion: "Credit Event", notes: "" },
-                ];
+        console.log("Final table rows:", tbody.rows.length);
+        console.log("Table updated with strategy:", normalizedStrategy);
+    }
 
-                const tbody = document.querySelector("#weekly-data tbody");
-                tbody.innerHTML = "";
-                weeklyData.forEach((week, index) => {
-                    const weekRow = tbody.insertRow();
-                    weekRow.classList.add("week-row");
-                    weekRow.innerHTML = `
-                        <td class="mdl-data-table__cell--non-numeric">
-                            <i class="material-icons expand-icon">add_circle_outline</i> Week ${week.week}
-                        </td>
-                        <td>$${week.price.toFixed(2)}</td>
-                        <td>$${week.AUR.toFixed(2)}</td>
-                        <td>${week.units.toLocaleString()}</td>
-                        <td>$${week.revenue.toFixed(2)}</td>
-                        <td>${week.inventory.toLocaleString()}</td>
-                        <td>${week.mmu}</td>
-                        <td class="mdl-data-table__cell--non-numeric">${week.promotion}</td>
-                        <td class="mdl-data-table__cell--non-numeric notes-column">
-                            <div contenteditable="true" class="editable-notes" data-table="weekly" data-row="${index}">${week.notes}</div>
-                        </td>
-                    `;
+    // COMMENT 6: Initialize with default strategy
+    console.log("Initializing with default strategy");
+    updateWhiteTicketTable('Price strategy 1');
 
-                    // Add click event to expand/collapse
-                    weekRow.querySelector(".expand-icon").addEventListener("click", function () {
-                        toggleDailyData(this, week.week);
-                    });
+    // COMMENT 7: Filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-button');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            applyFilter(filter);
+        });
+    });
 
-                    // Create a row for daily data (initially hidden)
-                    const dailyRow = tbody.insertRow();
-                    dailyRow.classList.add("daily-data");
-                    dailyRow.style.display = "none";
-                    dailyRow.innerHTML = `
-                        <td colspan="9">
-                            <table class="mdl-data-table mdl-js-data-table daily-table">
-                                <thead>
-                                    <tr>
-                                        <th>Day</th>
-                                        <th>Price</th>
-                                        <th>Units</th>
-                                        <th>Sales Dollars</th>
-                                        <th>Marketing</th>
-                                        <th>Promotion</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Daily data will be populated here -->
-                                </tbody>
-                            </table>
-                        </td>
-                    `;
+    function applyFilter(filter) {
+        const table = document.getElementById('white-ticket-table');
+        const rows = table.querySelectorAll('tbody tr');
+
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (filter === 'all') {
+                row.style.display = '';
+            } else {
+                const matchesFilter = Array.from(cells).some(cell => {
+                    return cell.textContent.toLowerCase().includes(filter.toLowerCase());
                 });
-
-                addTotals(weeklyData);
+                row.style.display = matchesFilter ? '' : 'none';
             }
+        });
+    }
 
-            // COMMENT 22: Add totals function
-            function addTotals(data) {
-                const totals = data.reduce((acc, week) => {
-                    acc.units += week.units;
-                    acc.revenue += week.revenue;
-                    return acc;
-                }, { units: 0, revenue: 0 });
+    // COMMENT 8: Select DOM elements
+    const form = document.getElementById("forecast-form");
+    const updateTableButton = document.getElementById("update-table");
+    const promotionSelect = document.getElementById("promotion-select");
+    const promotionsTable = document.getElementById("promotions-data");
+    const priceInput = document.getElementById("price");
+    const calculatedUnitsElement = document.getElementById("calculated-units");
+    const calculatedRevenueElement = document.getElementById("calculated-revenue");
+    const viewToggle = document.getElementById("view-toggle");
+    const yearlyView = document.getElementById("yearly-view");
+    const weeklyView = document.getElementById("weekly-view");
+    const seasonSelect = document.getElementById('season-select');
+    const selectStyleTitle = document.getElementById('select-style-title');
+    const selectStyleField = document.getElementById('select-style-field');
+    const productSearch = document.getElementById('product-search');
+    const pageContentBelowCard = document.getElementById('page-content-below-card');
 
-                const tbody = document.querySelector("#weekly-data tbody");
-                const totalRow = tbody.insertRow();
-                totalRow.innerHTML = `
-                    <td colspan="3" class="mdl-data-table__cell--non-numeric"><strong>Total</strong></td>
-                    <td><strong>${totals.units.toLocaleString()}</strong></td>
-                    <td><strong>$${totals.revenue.toFixed(2)}</strong></td>
-                    <td colspan="4"></td>
-                `;
-            }
+    // COMMENT 9: State variables
+    let calculatedUnits, calculatedRevenue;
+    let currentProduct = { price: 19.99 };
 
-            // COMMENT 23: Toggle daily data function
-            function toggleDailyData(icon, weekNumber) {
-                const weekRow = icon.closest("tr");
-                const dailyRow = weekRow.nextElementSibling;
-                const isExpanded = icon.textContent === "remove_circle_outline";
+    // COMMENT 10: Sample promotions data
+    const promotions = [
+        { name: "Regular Price", currentPrice: 19.99, discount: 0 },
+        { name: "LPS", currentPrice: 12.99, discount: 0 },
+        { name: "Two Day Sale", currentPrice: 14.99, discount: 0 },
+        { name: "EPIC deals", currentPrice: 10.99, discount: 0 },
+        { name: "Credit Event", currentPrice: 15.99, discount: 0 },
+        { name: "Main Sale", currentPrice: 14.99, discount: 0 },
+        { name: "Black Friday", currentPrice: 10.99, discount: 0 },
+    ];
 
-                if (isExpanded) {
-                    icon.textContent = "add_circle_outline";
-                    dailyRow.style.display = "none";
-                } else {
-                    icon.textContent = "remove_circle_outline";
-                    dailyRow.style.display = "table-row";
-                    populateDailyData(dailyRow, weekNumber);
-                }
-            }
+    // COMMENT 11: Event Listeners
+    if (form) form.addEventListener("submit", handleForecastSubmit);
+    if (updateTableButton) updateTableButton.addEventListener("click", updateTablesAndClear);
+    if (viewToggle) viewToggle.addEventListener("change", toggleView);
+    if (seasonSelect) seasonSelect.addEventListener('change', handleSeasonSelect);
+    if (productSearch) productSearch.addEventListener("input", handleProductSearch);
 
-            // COMMENT 24: Populate daily data function
-            function populateDailyData(dailyRow, weekNumber) {
-                const dailyTable = dailyRow.querySelector(".daily-table tbody");
-                dailyTable.innerHTML = "";
+    // COMMENT 12: Initialize
+    populatePromotionDropdown();
+    populatePromotionsTable();
 
-                // Sample daily data - replace with your actual data
-                const dailyData = [
-                    { day: "Monday", price: 14.99, units: 100, revenue: 7999, marketing: "45% off Mystery Offer", promotion: "Regular Price" },
-                    { day: "Tuesday", price: 14.99, units: 95, revenue: 7599, marketing: "$5 RTKC", promotion: "Regular Price" },
-                    { day: "Wednesday", price: 14.99, units: 105, revenue: 8398, marketing: "$20 off $100 offer", promotion: "Regular Price" },
-                    { day: "Thursday", price: 11.99, units: 90, revenue: 6749, marketing: "M25% GPO (In Store Use Only)", promotion: "Credit Event" },
-                    { day: "Friday", price: 11.99, units: 110, revenue: 8248, marketing: "15% off Credit Event Scratch Off Barcode", promotion: "Credit Event" },
-                    { day: "Saturday", price: 14.99, units: 130, revenue: 10398, marketing: "25% off Mystery Offer", promotion: "Three day sale" },
-                    { day: "Sunday", price: 14.99, units: 120, revenue: 9598, marketing: "Kohl's Card 30% Offer", promotion: "Epic Deals" },
-                ];
+    // COMMENT 13: Handle forecast submit function
+    function handleForecastSubmit(e) {
+        e.preventDefault();
+        const price = parseFloat(priceInput.value);
 
-                dailyData.forEach((day) => {
-                    const row = dailyTable.insertRow();
-                    const AUR = day.price * 0.62;
-                    row.innerHTML = `
-                        <td>${day.day}</td>
-                        <td>$${day.price.toFixed(2)}</td>
-                        <td>${day.units}</td>
-                        <td>$${day.revenue.toFixed(2)}</td>
-                        <td>${day.marketing}</td>
-                        <td>${day.promotion}</td>
-                    `;
-                });
-            }
+        calculatedUnits = Math.round(100000 / price);
+        calculatedRevenue = price * calculatedUnits;
 
-            // COMMENT 25: Product search functionality
-            const autocompleteResults = document.getElementById("autocomplete-results");
+        calculatedUnitsElement.textContent = calculatedUnits.toLocaleString();
+        calculatedRevenueElement.textContent = "$" + calculatedRevenue.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
 
-            // COMMENT 26: Sample product data
-            const products = [
-                { code: "58775216", name: "MEN'S NIKE DRI FIT FORM HOODED JACKET", price: 19.99 },
-                { code: "50093716", name: "NIKE STAR RUNNER NN", price: 14.99 },
-                { code: "58730148", name: "BOYS RAIN JACKET", price: 11.99 },
-                { code: "83178349", name: "FITBIT CHARGE 6 BLACK", price: 13.99 },
-                { code: "77404421", name: "Nike Sportswear Essential Women's Leggings", price: 14.99 },
-            ];
+        updateTableButton.disabled = false;
+    }
 
-            if (productSearch) {
-                productSearch.addEventListener("input", handleProductSearch);
-                productSearch.addEventListener("focus", handleProductFocus);
-                productSearch.addEventListener("input", handleProductInput);
-            }
-            document.addEventListener("click", closeAutocomplete);
+    // COMMENT 14: Update promotion data function
+    function updatePromotionData(index, newPrice) {
+        promotions[index].currentPrice = newPrice;
+    }
 
-            // COMMENT 27: Handle product search function
-            function handleProductSearch() {
-                const input = this.value.toLowerCase();
-                const results = products.filter(product => 
-                    product.code.toLowerCase().includes(input) || 
-                    product.name.toLowerCase().includes(input)
-                );
-                displayAutocompleteResults(results);
-            }
+    // COMMENT 15: Update tables and clear function
+    function updateTablesAndClear() {
+        const price = parseFloat(priceInput.value);
+        const selectedPromoIndex = parseInt(promotionSelect.value);
 
-            // COMMENT 28: Handle product focus function
-            function handleProductFocus() {
-                if (this.value === "") {
-                    displayAutocompleteResults(products);
-                }
-            }
+        if (selectedPromoIndex < promotions.length) {
+            promotions[selectedPromoIndex].currentPrice = price;
+            promotions[selectedPromoIndex].units = calculatedUnits;
+            promotions[selectedPromoIndex].sales = calculatedRevenue;
+            promotions[selectedPromoIndex].AUR = calculateAUR(price);
+        }
 
-            // COMMENT 29: Handle product input function
-            function handleProductInput() {
-                if (this.value.length > 0) {
-                    this.parentElement.classList.add("is-dirty");
-                } else {
-                    this.parentElement.classList.remove("is-dirty");
-                }
-            }
+        populatePromotionsTable();
+        populatePromotionDropdown();
 
-            // COMMENT 30: Display autocomplete results function
-            function displayAutocompleteResults(results) {
-                autocompleteResults.innerHTML = "";
-                if (results.length === 0) {
-                    autocompleteResults.style.display = "none";
-                    return;
-                }
+        calculatedUnits = null;
+        calculatedRevenue = null;
+        calculatedUnitsElement.textContent = "";
+        calculatedRevenueElement.textContent = "";
+        priceInput.value = "";
 
-                results.forEach((result) => {
-                    const div = document.createElement("div");
-                    div.textContent = `${result.code} - ${result.name}`;
-                    div.className = "autocomplete-item mdl-button mdl-js-button mdl-js-ripple-effect";
-                    div.addEventListener("click", () => selectProduct(result));
-                    autocompleteResults.appendChild(div);
-                });
+        updateTableButton.disabled = true;
+        priceInput.parentElement.classList.remove("is-dirty");
+    }
 
-                autocompleteResults.style.display = "block";
-            }
-
-            // COMMENT 31: Select product function
-            function selectProduct(product) {
-                currentProduct = product;
-                productSearch.value = `${product.code} - ${product.name}`;
-                autocompleteResults.style.display = "none";
-                productSearch.parentElement.classList.add("is-dirty");
-                componentHandler.upgradeElement(productSearch.parentElement);
-                document.getElementById("selected-style").innerHTML = productSearch.value;
-                pageContentBelowCard.classList.remove('hidden');
-                console.log("Selected product:", product);
-            }
-
-            // COMMENT 32: Close autocomplete function
-            function closeAutocomplete(e) {
-                if (!productSearch.contains(e.target) && !autocompleteResults.contains(e.target)) {
-                    autocompleteResults.style.display = "none";
-                }
-            }
-
-            // COMMENT 33: Populate Last Year's promotion data
-            function populateLastYearPromotions() {
-                console.log("Populating Last Year's promotion data");
-                const tbody = document.querySelector("#promotions-data-2024 tbody");
-                if (!tbody) {
-                    console.error("Table body for last year's promotions not found");
-                    return;
-                }
-
-                const lastYearPromotions = [
-                    { promotion: "Regular Price", price: 19.99, AUR: 13.78, dates: "Jan 1 - Feb 2", units: 50000, sales: 1000000.00, notes: "" },
-                    { promotion: "Main Sale", price: 14.99, AUR: 8.54, dates: "Feb 23 - Feb 26", units: 10000, sales: 150000.00, notes: "" },
-                    { promotion: "LPS", price: 12.99, AUR: 6.40, dates: "Mar 1 - Mar 3", units: 50000, sales: 1000000.00, notes: "" },
-                    { promotion: "Epic Deals", price: 10.99, AUR: 7.70, dates: "Mar 16 - Mar 22", units: 50000, sales: 1000000.00, notes: "" },
-                    { promotion: "Credit Event", price: 15.99, AUR: 10.02, dates: "Apr 4 - Apr 7", units: 50000, sales: 1000000.00, notes: "" }
-                ];
-
-                tbody.innerHTML = "";
-                lastYearPromotions.forEach((promo, index) => {
-                    const row = tbody.insertRow();
-                    row.innerHTML = `
-                        <td class="mdl-data-table__cell--non-numeric">${promo.promotion}</td>
-                        <td>$${formatNumber(promo.price, 2)}</td>
-                        <td>$${formatNumber(promo.AUR, 2)}</td>
-                        <td class="mdl-data-table__cell--non-numeric">${promo.dates}</td>
-                        <td>${formatNumber(promo.units)}</td>
-                        <td>$${Math.round(promo.sales).toLocaleString()}</td>
-                        <td class="mdl-data-table__cell--non-numeric notes-column">
-                            <div contenteditable="true" class="editable-notes" data-table="lastYear" data-row="${index}">${promo.notes}</div>
-                        </td>
-                    `;
-                });
-                console.log("Last Year's promotion data populated");
-            }
-
-            // COMMENT 34: Call the function to populate Last Year's promotion data
-            populateLastYearPromotions();
-
-            // COMMENT 35: Handle season select function
-            function handleSeasonSelect() {
-                if (seasonSelect.value) {
-                    selectStyleTitle.classList.remove('hidden');
-                    selectStyleField.classList.remove('hidden');
-                    pageContentBelowCard.classList.add('hidden');
-                } else {
-                    selectStyleTitle.classList.add('hidden');
-                    selectStyleField.classList.add('hidden');
-                    pageContentBelowCard.classList.add('hidden');
+    // COMMENT 16: Add price event listeners function
+    function addPriceEventListeners() {
+        console.log("Adding price event listeners");
+        const tbody = promotionsTable.querySelector("tbody");
+        tbody.addEventListener("input", function (e) {
+            if (e.target && e.target.cellIndex === 1) {
+                console.log("Price cell edited");
+                const row = e.target.parentElement;
+                const priceCell = e.target;
+                const aurCell = row.cells[2];
+                const price = parseFloat(priceCell.textContent.replace("$", ""));
+                if (!isNaN(price)) {
+                    const AUR = calculateAUR(price);
+                    aurCell.textContent = "$" + AUR.toFixed(2);
                 }
             }
         });
-    </script>
+    }
+
+    // COMMENT 17: Populate promotion dropdown function
+    function populatePromotionDropdown() {
+        promotionSelect.innerHTML = "";
+        promotions.forEach((promo, index) => {
+            const option = document.createElement("option");
+            option.value = index;
+            const price = promo.currentPrice || (currentProduct ? currentProduct.price * (1 - promo.discount) : 0);
+            let dateRange = "";
+            if (promo.startDate && promo.endDate) {
+                dateRange = ` (${promo.startDate} to ${promo.endDate})`;
+            }
+            option.textContent = `${promo.name}${dateRange} (Current: $${price.toFixed(2)})`;
+            promotionSelect.appendChild(option);
+        });
+    }
+// COMMENT 18: Populate promotions table function (continued)
+    function populatePromotionsTable() {
+        console.log("Populating promotions table");
+        try {
+            const tbody = promotionsTable.querySelector("tbody");
+            tbody.innerHTML = "";
+
+            promotions.forEach((promo, index) => {
+                const row = tbody.insertRow();
+                const price = promo.currentPrice || (currentProduct ? currentProduct.price * (1 - promo.discount) : 0);
+                const AUR = calculateAUR(price);
+                const units = promo.units || 30000;
+                const sales = promo.sales || price * units;
+                row.innerHTML = `
+                    <td class="mdl-data-table__cell--non-numeric">${promo.name}</td>
+                    <td>$${price.toFixed(2)}</td>
+                    <td>$${AUR.toFixed(2)}</td>
+                    <td>${units.toLocaleString()}</td>
+                    <td>$${Math.round(sales).toLocaleString()}</td>
+                    <td class="mdl-data-table__cell--non-numeric notes-column">
+                        <div contenteditable="true" class="editable-notes" data-table="promotions" data-row="${index}">${promo.notes || ""}</div>
+                    </td>
+                `;
+            });
+
+            addPriceEventListeners();
+        } catch (error) {
+            console.error("Error in populatePromotionsTable:", error);
+        }
+    }
+
+    // COMMENT 19: Calculate AUR function
+    function calculateAUR(price) {
+        return price * 0.62;
+    }
+
+    // COMMENT 20: Toggle view function
+    function toggleView() {
+        if (viewToggle.checked) {
+            yearlyView.style.display = "none";
+            weeklyView.style.display = "block";
+            populateWeeklyData();
+        } else {
+            yearlyView.style.display = "block";
+            weeklyView.style.display = "none";
+        }
+    }
+
+    // COMMENT 21: Populate weekly data function
+    function populateWeeklyData() {
+        const weeklyData = [
+            { week: 1, price: 14.99, AUR: 14.99 * 0.62, units: 577, revenue: 46155, inventory: 10000, mmu: "50%", promotion: "Regular Price", notes: "" },
+            { week: 2, price: 14.99, AUR: 14.99 * 0.62, units: 592, revenue: 47354, inventory: 9408, mmu: "50%", promotion: "Regular Price", notes: "" },
+            { week: 5, price: 14.99, AUR: 14.99 * 0.62, units: 600, revenue: 47994, inventory: 8808, mmu: "50%", promotion: "Regular Price", notes: "" },
+            { week: 9, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 8008, mmu: "45%", promotion: "Main Sale", notes: "" },
+            { week: 14, price: 11.99, AUR: 11.99 * 0.62, units: 850, revenue: 63741, inventory: 7158, mmu: "45%", promotion: "Main Sale", notes: "" },
+            { week: 18, price: 14.99, AUR: 14.99 * 0.62, units: 1000, revenue: 69990, inventory: 6158, mmu: "40%", promotion: "Regular Price", notes: "" },
+            { week: 22, price: 13.99, AUR: 14.99 * 0.62, units: 1200, revenue: 71988, inventory: 4958, mmu: "35%", promotion: "Two Day Sale", notes: "" },
+            { week: 27, price: 14.99, AUR: 14.99 * 0.62, units: 1100, revenue: 71489, inventory: 3858, mmu: "40%", promotion: "Epic Deals", notes: "" },
+            { week: 31, price: 13.99, AUR: 13.99 * 0.62, units: 950, revenue: 66490, inventory: 2908, mmu: "45%", promotion: "Back to School", notes: "" },
+            { week: 36, price: 11.99, AUR: 11.99 * 0.62, units: 800, revenue: 59992, inventory: 2108, mmu: "50%", promotion: "Credit Event", notes: "" },
+            { week: 40, price: 14.99, AUR: 14.99 * 0.62, units: 700, revenue: 55993, inventory: 1408, mmu: "50%", promotion: "Regular Price", notes: "" },
+            { week: 45, price: 14.99, AUR: 14.99 * 0.62, units: 1500, revenue: 89985, inventory: -92, mmu: "30%", promotion: "Black Friday", notes: "" },
+            { week: 49, price: 13.99, AUR: 13.99 * 0.62, units: 1000, revenue: 69990, inventory: -1092, mmu: "40%", promotion: "Credit Event", notes: "" },
+        ];
+
+        const tbody = document.querySelector("#weekly-data tbody");
+        tbody.innerHTML = "";
+        weeklyData.forEach((week, index) => {
+            const weekRow = tbody.insertRow();
+            weekRow.classList.add("week-row");
+            weekRow.innerHTML = `
+                <td class="mdl-data-table__cell--non-numeric">
+                    <i class="material-icons expand-icon">add_circle_outline</i> Week ${week.week}
+                </td>
+                <td>$${week.price.toFixed(2)}</td>
+                <td>$${week.AUR.toFixed(2)}</td>
+                <td>${week.units.toLocaleString()}</td>
+                <td>$${week.revenue.toFixed(2)}</td>
+                <td>${week.inventory.toLocaleString()}</td>
+                <td>${week.mmu}</td>
+                <td class="mdl-data-table__cell--non-numeric">${week.promotion}</td>
+                <td class="mdl-data-table__cell--non-numeric notes-column">
+                    <div contenteditable="true" class="editable-notes" data-table="weekly" data-row="${index}">${week.notes}</div>
+                </td>
+            `;
+
+            // Add click event to expand/collapse
+            weekRow.querySelector(".expand-icon").addEventListener("click", function () {
+                toggleDailyData(this, week.week);
+            });
+
+            // Create a row for daily data (initially hidden)
+            const dailyRow = tbody.insertRow();
+            dailyRow.classList.add("daily-data");
+            dailyRow.style.display = "none";
+            dailyRow.innerHTML = `
+                <td colspan="9">
+                    <table class="mdl-data-table mdl-js-data-table daily-table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Price</th>
+                                <th>Units</th>
+                                <th>Sales Dollars</th>
+                                <th>Marketing</th>
+                                <th>Promotion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Daily data will be populated here -->
+                        </tbody>
+                    </table>
+                </td>
+            `;
+        });
+
+        addTotals(weeklyData);
+    }
+
+    // COMMENT 22: Add totals function
+    function addTotals(data) {
+        const totals = data.reduce((acc, week) => {
+            acc.units += week.units;
+            acc.revenue += week.revenue;
+            return acc;
+        }, { units: 0, revenue: 0 });
+
+        const tbody = document.querySelector("#weekly-data tbody");
+        const totalRow = tbody.insertRow();
+        totalRow.innerHTML = `
+            <td colspan="3" class="mdl-data-table__cell--non-numeric"><strong>Total</strong></td>
+            <td><strong>${totals.units.toLocaleString()}</strong></td>
+            <td><strong>$${totals.revenue.toFixed(2)}</strong></td>
+            <td colspan="4"></td>
+        `;
+    }
+
+    // COMMENT 23: Toggle daily data function
+    function toggleDailyData(icon, weekNumber) {
+        const weekRow = icon.closest("tr");
+        const dailyRow = weekRow.nextElementSibling;
+        const isExpanded = icon.textContent === "remove_circle_outline";
+
+        if (isExpanded) {
+            icon.textContent = "add_circle_outline";
+            dailyRow.style.display = "none";
+        } else {
+            icon.textContent = "remove_circle_outline";
+            dailyRow.style.display = "table-row";
+            populateDailyData(dailyRow, weekNumber);
+        }
+    }
+
+    // COMMENT 24: Populate daily data function
+    function populateDailyData(dailyRow, weekNumber) {
+        const dailyTable = dailyRow.querySelector(".daily-table tbody");
+        dailyTable.innerHTML = "";
+
+        // Sample daily data - replace with your actual data
+        const dailyData = [
+            { day: "Monday", price: 14.99, units: 100, revenue: 7999, marketing: "45% off Mystery Offer", promotion: "Regular Price" },
+            { day: "Tuesday", price: 14.99, units: 95, revenue: 7599, marketing: "$5 RTKC", promotion: "Regular Price" },
+            { day: "Wednesday", price: 14.99, units: 105, revenue: 8398, marketing: "$20 off $100 offer", promotion: "Regular Price" },
+            { day: "Thursday", price: 11.99, units: 90, revenue: 6749, marketing: "M25% GPO (In Store Use Only)", promotion: "Credit Event" },
+            { day: "Friday", price: 11.99, units: 110, revenue: 8248, marketing: "15% off Credit Event Scratch Off Barcode", promotion: "Credit Event" },
+            { day: "Saturday", price: 14.99, units: 130, revenue: 10398, marketing: "25% off Mystery Offer", promotion: "Three day sale" },
+            { day: "Sunday", price: 14.99, units: 120, revenue: 9598, marketing: "Kohl's Card 30% Offer", promotion: "Epic Deals" },
+        ];
+
+        dailyData.forEach((day) => {
+            const row = dailyTable.insertRow();
+            const AUR = day.price * 0.62;
+            row.innerHTML = `
+                <td>${day.day}</td>
+                <td>$${day.price.toFixed(2)}</td>
+                <td>${day.units}</td>
+                <td>$${day.revenue.toFixed(2)}</td>
+                <td>${day.marketing}</td>
+                <td>${day.promotion}</td>
+            `;
+        });
+    }
+
+    // COMMENT 25: Product search functionality
+    const autocompleteResults = document.getElementById("autocomplete-results");
+
+    // COMMENT 26: Sample product data
+    const products = [
+        { code: "58775216", name: "MEN'S NIKE DRI FIT FORM HOODED JACKET", price: 19.99 },
+        { code: "50093716", name: "NIKE STAR RUNNER NN", price: 14.99 },
+        { code: "58730148", name: "BOYS RAIN JACKET", price: 11.99 },
+        { code: "83178349", name: "FITBIT CHARGE 6 BLACK", price: 13.99 },
+        { code: "77404421", name: "Nike Sportswear Essential Women's Leggings", price: 14.99 },
+    ];
+
+    if (productSearch) {
+        productSearch.addEventListener("input", handleProductSearch);
+        productSearch.addEventListener("focus", handleProductFocus);
+        productSearch.addEventListener("input", handleProductInput);
+    }
+    document.addEventListener("click", closeAutocomplete);
+
+    // COMMENT 27: Handle product search function
+    function handleProductSearch() {
+        const input = this.value.toLowerCase();
+        const results = products.filter(product => 
+            product.code.toLowerCase().includes(input) || 
+            product.name.toLowerCase().includes(input)
+        );
+        displayAutocompleteResults(results);
+    }
+
+    // COMMENT 28: Handle product focus function
+    function handleProductFocus() {
+        if (this.value === "") {
+            displayAutocompleteResults(products);
+        }
+    }
+
+    // COMMENT 29: Handle product input function
+    function handleProductInput() {
+        if (this.value.length > 0) {
+            this.parentElement.classList.add("is-dirty");
+        } else {
+            this.parentElement.classList.remove("is-dirty");
+        }
+    }
+
+    // COMMENT 30: Display autocomplete results function
+    function displayAutocompleteResults(results) {
+        autocompleteResults.innerHTML = "";
+        if (results.length === 0) {
+            autocompleteResults.style.display = "none";
+            return;
+        }
+
+        results.forEach((result) => {
+            const div = document.createElement("div");
+            div.textContent = `${result.code} - ${result.name}`;
+            div.className = "autocomplete-item mdl-button mdl-js-button mdl-js-ripple-effect";
+            div.addEventListener("click", () => selectProduct(result));
+            autocompleteResults.appendChild(div);
+        });
+
+        autocompleteResults.style.display = "block";
+    }
+
+    // COMMENT 31: Select product function
+    function selectProduct(product) {
+        currentProduct = product;
+        productSearch.value = `${product.code} - ${product.name}`;
+        autocompleteResults.style.display = "none";
+        productSearch.parentElement.classList.add("is-dirty");
+        componentHandler.upgradeElement(productSearch.parentElement);
+        document.getElementById("selected-style").innerHTML = productSearch.value;
+        pageContentBelowCard.classList.remove('hidden');
+        console.log("Selected product:", product);
+    }
+
+    // COMMENT 32: Close autocomplete function
+    function closeAutocomplete(e) {
+        if (!productSearch.contains(e.target) && !autocompleteResults.contains(e.target)) {
+            autocompleteResults.style.display = "none";
+        }
+    }
+
+   // COMMENT 33: Populate Last Year's promotion data (continued)
+    function populateLastYearPromotions() {
+        console.log("Populating Last Year's promotion data");
+        const tbody = document.querySelector("#promotions-data-2024 tbody");
+        if (!tbody) {
+            console.error("Table body for last year's promotions not found");
+            return;
+        }
+
+        const lastYearPromotions = [
+            { promotion: "Regular Price", price: 19.99, AUR: 13.78, dates: "Jan 1 - Feb 2", units: 50000, sales: 1000000.00, notes: "" },
+            { promotion: "Main Sale", price: 14.99, AUR: 8.54, dates: "Feb 23 - Feb 26", units: 10000, sales: 150000.00, notes: "" },
+            { promotion: "LPS", price: 12.99, AUR: 6.40, dates: "Mar 1 - Mar 3", units: 50000, sales: 1000000.00, notes: "" },
+            { promotion: "Epic Deals", price: 10.99, AUR: 7.70, dates: "Mar 16 - Mar 22", units: 50000, sales: 1000000.00, notes: "" },
+            { promotion: "Credit Event", price: 15.99, AUR: 10.02, dates: "Apr 4 - Apr 7", units: 50000, sales: 1000000.00, notes: "" }
+        ];
+
+        tbody.innerHTML = "";
+        lastYearPromotions.forEach((promo, index) => {
+            const row = tbody.insertRow();
+            row.innerHTML = `
+                <td class="mdl-data-table__cell--non-numeric">${promo.promotion}</td>
+                <td>$${formatNumber(promo.price, 2)}</td>
+                <td>$${formatNumber(promo.AUR, 2)}</td>
+                <td class="mdl-data-table__cell--non-numeric">${promo.dates}</td>
+                <td>${formatNumber(promo.units)}</td>
+                <td>$${Math.round(promo.sales).toLocaleString()}</td>
+                <td class="mdl-data-table__cell--non-numeric notes-column">
+                    <div contenteditable="true" class="editable-notes" data-table="lastYear" data-row="${index}">${promo.notes}</div>
+                </td>
+            `;
+        });
+        console.log("Last Year's promotion data populated");
+    }
+
+    // COMMENT 34: Call the function to populate Last Year's promotion data
+    populateLastYearPromotions();
+
+    // COMMENT 35: Handle season select function
+    function handleSeasonSelect() {
+        if (seasonSelect.value) {
+            selectStyleTitle.classList.remove('hidden');
+            selectStyleField.classList.remove('hidden');
+            pageContentBelowCard.classList.add('hidden');
+        } else {
+            selectStyleTitle.classList.add('hidden');
+            selectStyleField.classList.add('hidden');
+            pageContentBelowCard.classList.add('hidden');
+        }
+    }
+
+    // COMMENT 36: Sort White Ticket table function
+    window.sortWhiteTicketTable = function(rowIndex) {
+        const table = document.getElementById('white-ticket-table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.rows);
+
+        // Determine sort direction
+        const sortDirection = rows[rowIndex].getAttribute('data-sort') === 'asc' ? -1 : 1;
+
+        // Sort the rows
+        rows.sort((a, b) => {
+            let aValue = a.cells[1].textContent;
+            let bValue = b.cells[1].textContent;
+
+            // Remove currency symbol and commas, then convert to number
+            aValue = Number(aValue.replace(/[^0-9.-]+/g,""));
+            bValue = Number(bValue.replace(/[^0-9.-]+/g,""));
+
+            return sortDirection * (aValue - bValue);
+        });
+
+        // Update sort direction for next click
+        rows[rowIndex].setAttribute('data-sort', sortDirection === 1 ? 'asc' : 'desc');
+
+        // Re-add sorted rows to the table
+        tbody.innerHTML = '';
+        rows.forEach(row => tbody.appendChild(row));
+
+        // Update sort indicators
+        updateSortIndicators(rowIndex, sortDirection);
+    }
+
+    // COMMENT 37: Helper function to update sort indicators
+    function updateSortIndicators(rowIndex, sortDirection) {
+        const table = document.getElementById('white-ticket-table');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.rows);
+
+        rows.forEach((row, index) => {
+            const cell = row.cells[0];
+            cell.textContent = cell.textContent.replace(' ▲', '').replace(' ▼', '');
+            if (index === rowIndex) {
+                cell.textContent += sortDirection === 1 ? ' ▲' : ' ▼';
+            }
+        });
+    }
+
+    // COMMENT 38: Format number helper function
+    function formatNumber(number, decimals = 0) {
+        return Number(number).toLocaleString('en-US', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        });
+    }
+
+}); // End of DOMContentLoaded event listener   </script>
     <!-- END: Custom JavaScript -->
 </body>
 </html>
