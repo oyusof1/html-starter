@@ -169,14 +169,15 @@
         }
         /* END: Input Field Styles */
 
-/* Sort Button Styles */
-#white-ticket-table .mdl-button--icon {
-    margin-right: 8px;
-}
-#white-ticket-table th:first-child,
-#white-ticket-table td:first-child {
-    white-space: nowrap;
-}
+        /* START: Sort Button Styles */
+        #white-ticket-table .mdl-button--icon {
+            margin-right: 8px;
+        }
+        #white-ticket-table th:first-child,
+        #white-ticket-table td:first-child {
+            white-space: nowrap;
+        }
+        /* END: Sort Button Styles */
 
         /* START: Pricing Strategy Filter Buttons Styles */
         .price-strategy-filters {
@@ -211,6 +212,32 @@
             min-height: 2rem; /* Adjust as needed */
         }
         /* END: Pricing Strategy Filter Buttons Styles */
+
+        /* START: Tab Navigation Styles */
+        .tab-navigation {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .tab-button.active {
+            background-color: #3f51b5;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* END: Tab Navigation Styles */
 
         .mdl-layout__content {
             background-color: #f5f5f5 !important;
@@ -262,211 +289,231 @@
                 <div id="page-content-below-card" class="hidden">
                     <h5 id="selected-style"></h5>
 
-                    <!-- START: White Ticket Section -->
-                    <div class="mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">White Ticket</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            <p>Below you will find price points ranked by their total sales dollars.<br>Select a pricing strategy to view its description and refresh the table below.</p>
-                        </div>
-
-                       <!-- START: Price Strategy Filter Buttons -->
-<div class="mdl-card__supporting-text">
-    <div class="price-strategy-container">
-        <div class="price-strategy-buttons">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent price-strategy-button" data-strategy="Price strategy 1">
-                Price strategy 1
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 2">
-                Price strategy 2
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 3">
-                Price strategy 3
-            </button>
-        </div>
-        <div id="strategy-description-container">
-            <p id="default-strategy-description">The information here would describe how this price strategy is generated. 
-</p>
-            <p class="price-strategy-description" data-strategy="Price strategy 1">
-                The information here would describe how this price strategy is generated. 
-            </p>
-            <p class="price-strategy-description" data-strategy="Price strategy 2">
-              Then the information here would describe how this price strategy is generated. 
-       </p>
-            <p class="price-strategy-description" data-strategy="Price strategy 3">
-                 This button would show information here would describe how this price strategy is generated.  
-            </p>
-        </div>
-    </div>
-</div>
-<!-- END: Price Strategy Filter Buttons -->
-
-
-                      <!-- START: White Ticket Table -->
-<div class="mdl-card__supporting-text">
-    <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
-        <thead>
-            <tr>
-                <th class="mdl-data-table__cell--non-numeric">White Ticket</th>
-                <th>$9.99</th>
-                <th>$10.99</th>
-                <th>$11.99</th>
-                <th>$12.99</th>
-                <th>$13.99</th>
-                <th>$14.99</th>
-                <th>$15.99</th>
-                <th>$16.99</th>
-                <th>$17.99</th>
-                <th>$18.99</th>
-                <th>$19.99</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Table body will be populated by JavaScript -->
-        </tbody>
-    </table>
-</div>
-<!-- END: White Ticket Table -->
+                    <!-- START: Tab Navigation -->
+                    <div class="tab-navigation">
+                        <button class="tab-button active" data-tab="white-ticket">White Ticket</button>
+                        <button class="tab-button" data-tab="price-history">Price History</button>
+                        <button class="tab-button" data-tab="forecasting">Forecasting</button>
                     </div>
-                    <!-- END: White Ticket Section -->
+                    <!-- END: Tab Navigation -->
 
+                    <!-- START: White Ticket Tab Content -->
+                    <div id="white-ticket-tab" class="tab-content active">
+                        <!-- START: White Ticket Section -->
+                        <div class="mdl-card mdl-shadow--2dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">White Ticket</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                <p>Below you will find price points ranked by their total sales dollars.<br>Select a pricing strategy to view its description and refresh the table below.</p>
+                            </div>
+
+                            <!-- START: Price Strategy Filter Buttons -->
+                            <div class="mdl-card__supporting-text">
+                                <div class="price-strategy-container">
+                                    <div class="price-strategy-buttons">
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent price-strategy-button" data-strategy="Price strategy 1">
+                                            Price strategy 1
+                                        </button>
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 2">
+                                            Price strategy 2
+                                        </button>
+                                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect price-strategy-button" data-strategy="Price strategy 3">
+                                            Price strategy 3
+                                        </button>
+                                    </div>
+                                    <div id="strategy-description-container">
+                                        <p id="default-strategy-description">The information here would describe how this price strategy is generated. 
+                                        </p>
+                                        <p class="price-strategy-description" data-strategy="Price strategy 1">
+                                            The information here would describe how this price strategy is generated. 
+                                        </p>
+                                        <p class="price-strategy-description" data-strategy="Price strategy 2">
+                                        Then the information here would describe how this price strategy is generated. 
+                                    </p>
+                                        <p class="price-strategy-description" data-strategy="Price strategy 3">
+                                            This button would show information here would describe how this price strategy is generated.  
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: Price Strategy Filter Buttons -->
+
+                            <!-- START: White Ticket Table -->
+                            <div class="mdl-card__supporting-text">
+                                <table class="mdl-data-table mdl-js-data-table" id="white-ticket-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">White Ticket</th>
+                                            <th>$9.99</th>
+                                            <th>$10.99</th>
+                                            <th>$11.99</th>
+                                            <th>$12.99</th>
+                                            <th>$13.99</th>
+                                            <th>$14.99</th>
+                                            <th>$15.99</th>
+                                            <th>$16.99</th>
+                                            <th>$17.99</th>
+                                            <th>$18.99</th>
+                                            <th>$19.99</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Table body will be populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END: White Ticket Table -->
+                        </div>
+                        <!-- END: White Ticket Section -->
+                    </div>
+                    <!-- END: White Ticket Tab Content -->
+
+                    <!-- START: Price History Tab Content -->
+                    <div id="price-history-tab" class="tab-content">
+                       
                     <!-- START: Promotional Calendar Section -->
-                    <div class="mdl-card mdl-shadow--2dp content-card">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Price History</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            <p>Below you can view last seasons pricing at a promotion event level or a daily level.</p>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            <div class="view-toggle">
-                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="view-toggle">
-                                    <input type="checkbox" id="view-toggle" class="mdl-switch__input">
-                                    <span class="mdl-switch__label">View by day</span>
-                                </label>
-                            </div>
-
-                            <!-- START: Yearly View -->
-                            <div id="yearly-view">
-                                <h4>Last Year (Spring 2024)</h4>
-                                <table class="mdl-data-table mdl-js-data-table" id="promotions-data-2024">
-                                    <thead>
-                                        <tr>
-                                            <th class="mdl-data-table__cell--non-numeric">Promotion</th>
-                                            <th>Price</th>
-                                            <th>AUR</th>
-                                            <th class="mdl-data-table__cell--non-numeric">Dates</th>
-                                            <th>Units</th>
-                                            <th>Sales Dollars</th>
-                                            <th class="mdl-data-table__cell--non-numeric">Notes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Yearly view data will be populated here -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END: Yearly View -->
-
-                            <!-- START: Weekly View -->
-                            <div id="weekly-view" style="display: none">
-                                <table class="mdl-data-table mdl-js-data-table" id="weekly-data">
-                                    <thead>
-                                        <tr>
-                                            <th class="mdl-data-table__cell--non-numeric">Week</th>
-                                            <th>Price</th>
-                                            <th>AUR</th>
-                                            <th>Units</th>
-                                            <th>Sales Dollars</th>
-                                            <th>Inventory</th>
-                                            <th>MMU</th>
-                                            <th class="mdl-data-table__cell--non-numeric">Promotion</th>
-                                            <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Weekly data will be populated here -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END: Weekly View -->
-                        </div>
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Price History</h2>
                     </div>
-                    <!-- END: Promotional Calendar Section -->
-
-                    <!-- START: Combined Forecasting and This Year Forecasted Card -->
-                    <div class="mdl-card mdl-shadow--2dp content-card">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Forecasting (Spring 2025)</h2>
+                    <div class="mdl-card__supporting-text">
+                        <p>Below you can view last seasons pricing at a promotion event level or a daily level.</p>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <div class="view-toggle">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="view-toggle">
+                                <input type="checkbox" id="view-toggle" class="mdl-switch__input">
+                                <span class="mdl-switch__label">View by day</span>
+                            </label>
                         </div>
-                        <div class="mdl-card__supporting-text">
-                            <p>This tool lets you select last season's event and forecast a new price point for the upcoming season. If you approve the forecasted results, you can add them to the This Year Plan table below.</p>
 
-                            <!-- START: Forecasting Form -->
-                            <form id="forecast-form" class="forecast-form">
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <select class="mdl-textfield__input" id="promotion-select">
-                                        <!-- Options will be populated by JavaScript -->
-                                    </select>
-                                    <label class="mdl-textfield__label" for="promotion-select">Select Promotion</label>
-                                </div>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                    <input class="mdl-textfield__input" type="number" id="price" step="0.01" min="0">
-                                    <label class="mdl-textfield__label" for="price">Enter New Price</label>
-                                </div>
-                                <br>
-                                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                    Calculate Forecast
-                                </button>
-                            </form>
-                            <!-- END: Forecasting Form -->
-
-                            <!-- START: Forecast Results -->
-                            <div id="forecast-results" class="forecast-results">
-                                <br>
-                                <p>Forecasted Units: <span id="calculated-units"></span></p>
-                                <p>Forecasted Sales Dollars: <span id="calculated-revenue"></span></p>
-                            </div>
-                            <!-- END: Forecast Results -->
-
-                            <button type="button" id="update-table" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" disabled>
-                                Update Table with New Forecast
-                            </button>
-
-                            <!-- START: This Year Forecasted Table -->
-                            <h4>This Year Forecasted (Spring 2025)</h4>
-                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
+                        <!-- START: Yearly View -->
+                        <div id="yearly-view">
+                            <h4>Last Year (Spring 2024)</h4>
+                            <table class="mdl-data-table mdl-js-data-table" id="promotions-data-2024">
                                 <thead>
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric">Promotion</th>
                                         <th>Price</th>
                                         <th>AUR</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Dates</th>
                                         <th>Units</th>
                                         <th>Sales Dollars</th>
-                                        <th>Notes</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Notes</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Promotion rows will be populated by JavaScript -->
+                                    <!-- Yearly view data will be populated here -->
                                 </tbody>
                             </table>
-                            <!-- END: This Year Forecasted Table -->
                         </div>
+                        <!-- END: Yearly View -->
+
+                        <!-- START: Weekly View -->
+                        <div id="weekly-view" style="display: none">
+                            <table class="mdl-data-table mdl-js-data-table" id="weekly-data">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Week</th>
+                                        <th>Price</th>
+                                        <th>AUR</th>
+                                        <th>Units</th>
+                                        <th>Sales Dollars</th>
+                                        <th>Inventory</th>
+                                        <th>MMU</th>
+                                        <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                        <th class="mdl-data-table__cell--non-numeric notes-column">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Weekly data will be populated here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END: Weekly View -->
                     </div>
-                    <!-- END: Combined Forecasting and This Year Forecasted Card -->
                 </div>
+                <!-- END: Promotional Calendar Section -->
             </div>
-        </main>
+            <!-- END: Price History Tab Content -->
+
+            <!-- START: Forecasting Tab Content -->
+            <div id="forecasting-tab" class="tab-content">
+                <!-- START: Combined Forecasting and This Year Forecasted Card -->
+                <div class="mdl-card mdl-shadow--2dp content-card">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Forecasting (Spring 2025)</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <p>This tool lets you select last season's event and forecast a new price point for the upcoming season. If you approve the forecasted results, you can add them to the This Year Plan table below.</p>
+
+                        <!-- START: Forecasting Form -->
+                        <form id="forecast-form" class="forecast-form">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select class="mdl-textfield__input" id="promotion-select">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                                <label class="mdl-textfield__label" for="promotion-select">Select Promotion</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="number" id="price" step="0.01" min="0">
+                                <label class="mdl-textfield__label" for="price">Enter New Price</label>
+                            </div>
+                            <br>
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Calculate Forecast
+                            </button>
+                        </form>
+                        <!-- END: Forecasting Form -->
+
+                        <!-- START: Forecast Results -->
+                        <div id="forecast-results" class="forecast-results">
+                            <br>
+                            <p>Forecasted Units: <span id="calculated-units"></span></p>
+                            <p>Forecasted Sales Dollars: <span id="calculated-revenue"></span></p>
+                        </div>
+                        <!-- END: Forecast Results -->
+
+                        <button type="button" id="update-table" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary" disabled>
+                            Update Table with New Forecast
+                        </button>
+
+                        <!-- START: This Year Forecasted Table -->
+                        <h4>This Year Forecasted (Spring 2025)</h4>
+                        <table class="mdl-data-table mdl-js-data-table" id="promotions-data">
+                            <thead>
+                                <tr>
+                                    <th class="mdl-data-table__cell--non-numeric">Promotion</th>
+                                    <th>Price</th>
+                                    <th>AUR</th>
+                                    <th>Units</th>
+                                    <th>Sales Dollars</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Promotion rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <!-- END: This Year Forecasted Table -->
+                    </div>
+                </div>
+                <!-- END: Combined Forecasting and This Year Forecasted Card -->
+            </div>
+            <!-- END: Forecasting Tab Content -->
+        </div>
     </div>
-    <!-- END: Main Layout Structure -->
+</main>
+</div>
+<!-- END: Main Layout Structure -->
 
-    <!-- START: External JavaScript Libraries -->
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <!-- END: External JavaScript Libraries -->
+<!-- START: External JavaScript Libraries -->
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<!-- END: External JavaScript Libraries -->
 
-    <script>
-    // COMMENT 1: Start of DOMContentLoaded event listener
+<script>
+// COMMENT 1: Start of DOMContentLoaded event listener
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM fully loaded and parsed");
 
@@ -768,7 +815,8 @@ document.addEventListener("DOMContentLoaded", function () {
             promotionSelect.appendChild(option);
         });
     }
-// COMMENT 18: Populate promotions table function (continued)
+
+    // COMMENT 18: Populate promotions table function
     function populatePromotionsTable() {
         console.log("Populating promotions table");
         try {
@@ -906,7 +954,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    // COMMENT 23: Toggle daily data function
+   // COMMENT 23: Toggle daily data function
     function toggleDailyData(icon, weekNumber) {
         const weekRow = icon.closest("tr");
         const dailyRow = weekRow.nextElementSibling;
@@ -940,7 +988,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dailyData.forEach((day) => {
             const row = dailyTable.insertRow();
-            const AUR = day.price * 0.62;
             row.innerHTML = `
                 <td>${day.day}</td>
                 <td>$${day.price.toFixed(2)}</td>
@@ -1035,7 +1082,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-   // COMMENT 33: Populate Last Year's promotion data (continued)
+    // COMMENT 33: Populate Last Year's promotion data
     function populateLastYearPromotions() {
         console.log("Populating Last Year's promotion data");
         const tbody = document.querySelector("#promotions-data-2024 tbody");
@@ -1141,7 +1188,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-}); // End of DOMContentLoaded event listener   </script>
-    <!-- END: Custom JavaScript -->
+    // COMMENT 39: Tab Navigation Functionality
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabName = button.getAttribute('data-tab');
+            
+            // Deactivate all tabs
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Activate the clicked tab
+            button.classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        });
+    });
+
+}); // End of DOMContentLoaded event listener
+</script>
 </body>
 </html>
