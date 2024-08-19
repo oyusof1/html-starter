@@ -503,13 +503,14 @@
         }
     }
 
-    // COMMENT 1: Start of DOMContentLoaded event listener
+      // COMMENT 1: Start of DOMContentLoaded event listener
     document.addEventListener("DOMContentLoaded", function () {
         console.log("DOM fully loaded and parsed");
 
         // COMMENT 2: Define strategies object
         const strategies = {
             'Price strategy 1': [
+                ["White Ticket", 9.99, 10.99, 11.99, 12.99, 13.99, 14.99, 15.99, 16.99, 17.99, 18.99, 19.99],
                 ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
                 ["Forecasted Units", "3,824", "3,258", "2,782", "2382", "2045", "1762", "1524", "1325", "1159", "1020", "904"],
                 ["Forecasted Sales Dollars", "$38,192", "$35,805", "$33,335", "$30,932", "$28,609", "$26,402", "$24,368", "$22,501", "$20,849", "$19,369", "$18,080"],
@@ -517,6 +518,7 @@
                 ["Ranking by Sales Dollars", 6, 3, 1, 2, 4, 5, 7, 8, 9, 10, 11]
             ],
             'Price strategy 2': [
+                ["White Ticket", 9.99, 10.99, 11.99, 12.99, 13.99, 14.99, 15.99, 16.99, 17.99, 18.99, 19.99],
                 ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
                 ["Forecasted Units", "4,200", "3,580", "3,060", "2,620", "2,250", "1,940", "1,680", "1,460", "1,280", "1,120", "990"],
                 ["Forecasted Sales Dollars", "$41,958", "$39,344", "$36,689", "$34,033", "$31,447", "$29,080", "$26,843", "$24,785", "$23,027", "$21,437", "$19,790"],
@@ -524,6 +526,7 @@
                 ["Ranking by Sales Dollars", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
             ],
             'Price strategy 3': [
+                ["White Ticket", 9.99, 10.99, 11.99, 12.99, 13.99, 14.99, 15.99, 16.99, 17.99, 18.99, 19.99],
                 ["Cost", 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75, 5.75],
                 ["Forecasted Units", "3,450", "2,940", "2,510", "2,150", "1,840", "1,590", "1,370", "1,190", "1,040", "920", "810"],
                 ["Forecasted Sales Dollars", "$34,465", "$32,290", "$30,094", "$27,928", "$25,741", "$23,834", "$21,885", "$20,207", "$18,709", "$17,460", "$16,191"],
@@ -619,6 +622,7 @@
 
             // Populate the table with the selected strategy's data
             strategies[normalizedStrategy].forEach((row, index) => {
+                if (index === 0) return; // Skip the "White Ticket" row as it's now in the header
                 const newRow = tbody.insertRow();
                 const headerCell = newRow.insertCell();
                 headerCell.className = 'mdl-data-table__cell--non-numeric';
@@ -627,16 +631,9 @@
                 for (let i = 1; i < row.length; i++) {
                     const cell = newRow.insertCell();
 
-                    // Check if the value already has a '$' sign
                     if (row[0] === "Forecasted Sales Dollars") {
-                        const value = row[i];
-                        const formattedValue = parseFloat(value.replace(/[^\d.-]/g, '')).toLocaleString('en-US', {
-                            style: 'currency',
-                            currency: 'USD'
-                        });
-                        cell.textContent = formattedValue;
+                        cell.textContent = row[i];
                     } else if (typeof row[i] === 'number') {
-                        // Format other numbers with commas but no decimal places
                         cell.textContent = Number(row[i]).toLocaleString('en-US');
                     } else {
                         cell.textContent = row[i];
